@@ -1,9 +1,14 @@
 import { styled } from "../styles"
 
 const Button = styled('button', {
-  backgroundColor: "$green500",
+  backgroundColor: "$green300",
   borderRadius: 8,
-  padding: '4px, 8px'
+  padding: '4px, 8px',
+  transition: '0.4s',
+
+  '&:hover' : {
+    backgroundColor: "$green500"
+  }
   
 })
 

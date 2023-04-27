@@ -32,7 +32,21 @@ export const Product = styled("a", {
     borderRadius: 6,
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-betweeen",
+    justifyContent: "space-between",
+    padding: "2rem",
+    color: "$white",
+    backgroundColor: "rgba(0,0, 0, 0.6)",
+
+    strong: {
+      fontSize: '$lg'
+    },
+
+    span: {
+      fontSize: '$xl',
+      fontWeight: 'bold',
+      color: '$green300',
+      
+    }
     
   },
 });

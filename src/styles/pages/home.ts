@@ -36,17 +36,24 @@ export const Product = styled("a", {
     padding: "2rem",
     color: "$white",
     backgroundColor: "rgba(0,0, 0, 0.6)",
-
+    overflow: "hidden",
     strong: {
-      fontSize: '$lg'
+      fontSize: "$lg",
     },
-
+    transform: "translateY(110%)",
+    opacity: 0,
+    transition: "all 0.2s ease-in-out",
     span: {
-      fontSize: '$xl',
-      fontWeight: 'bold',
-      color: '$green300',
-      
-    }
-    
+      fontSize: "$xl",
+      fontWeight: "bold",
+      color: "$green300",
+    },
+  },
+
+  "&:hover": {
+    footer: {
+      transform: "translateY(0%)",
+      opacity: "1",
+    },
   },
 });

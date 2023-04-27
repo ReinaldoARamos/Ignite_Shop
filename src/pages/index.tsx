@@ -17,7 +17,15 @@ export default function Home() {
       </Product>
 
       <Product>
-        <Image src={Camisa1} alt="" width={520} height={480} />
+        <Image src={Camisa2} alt="" width={520} height={480} />
+
+        <footer>
+          <strong>Camisa x</strong>
+          <span>R$: 79.90</span>
+        </footer>
+      </Product>
+      <Product>
+        <Image src={Camisa3} alt="" width={520} height={480} />
 
         <footer>
           <strong>Camisa x</strong>

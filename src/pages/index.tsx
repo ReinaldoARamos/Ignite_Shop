@@ -6,6 +6,7 @@ import Camisa3 from "../assets/Camisas/Camisa 3.png";
 import { useKeenSlider } from "keen-slider/react";
 
 import "keen-slider/keen-slider.min.css";
+import { stripe } from "../lib/stripe";
 export default function Home() {
   const [sliderRef] = useKeenSlider({
     slides: {
@@ -50,4 +51,15 @@ export default function Home() {
       </Product>
     </HomeContainer>
   );
+}
+
+export const getServerSideProps = async () => {
+
+  const  response = await stripe.products.list()
+  console.log(response.data)
+  return {
+    props: {
+        list: []
+    }
+  }
 }

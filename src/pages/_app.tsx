@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Container > 
       <Header>
         <Image src={Logo} alt=' ' />
-        Ignite Shop
+        
       </Header>
   <Component {...pageProps} />
   </Container>

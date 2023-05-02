@@ -15,7 +15,7 @@ export const GlobalStyles = globalCss({
         fontFamily: 'Roboto',
         fontWeight: 400,
         color: "$gray100",
-
+        
     }
     
 })

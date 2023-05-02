@@ -12,7 +12,7 @@ export const HomeContainer = styled("main", {
 export const Product = styled("a", {
   background: "linear-gradient(100deg, #1ea483 0%, #7465d4 100%) ",
   borderRadius: 8,
-
+ color: "$gray100",
   cursor: "pointer",
   position: "relative",
   display: "flex",
@@ -39,7 +39,6 @@ export const Product = styled("a", {
     overflow: "hidden",
     strong: {
       fontSize: "$lg",
-      color: "$gray100",
     },
     transform: "translateY(110%)",
     opacity: 0,

@@ -1,4 +1,5 @@
 import { ImageContainer, ProductContainer, ProductDetails } from "@/src/styles/pages/products"
+import { GetStaticProps } from "next"
 import Image from "next/image"
 import { useRouter } from "next/router"
 

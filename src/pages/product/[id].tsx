@@ -1,6 +1,6 @@
 import { stripe } from "../../lib/stripe";
 
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import {GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Stripe from "stripe";
 import { ParsedUrlQuery } from 'querystring';
@@ -41,12 +41,12 @@ export default function Product({ products }: ProductsProps) {
   );
 }
 
-export const getStaticPath : GetStaticPaths = async () => { 
+export const getStaticPaths : GetStaticPaths = async () => { 
 return { 
     paths: [
       {
         params: {
-          id: "prod_NnBi8kGskbRrBU",
+          id: 'prod_NnBi8kGskbRrBU',
         },
       },
     ],

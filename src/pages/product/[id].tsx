@@ -27,13 +27,13 @@ interface ProductsProps {
   };
 }
 
-export default function Product({ products }: ProductsProps) {
+export default function Product({ products }: ProductsProps ) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return <p>Loading...</p>;
   }
   return (
-    <ProductContainer>
+    <ProductContainer >
       <ImageContainer>
         <Image src={products.imageURL} alt="" width={520} height={400}></Image>
       </ImageContainer>
@@ -47,7 +47,7 @@ export default function Product({ products }: ProductsProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths  = async () => {
   return {
     paths: [
       {
@@ -60,7 +60,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
+export const getStaticProps: GetStaticProps<any, { id: string } > = async ({
   params,
 }) => {
   //const productId = params.id;

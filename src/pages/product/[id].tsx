@@ -1,13 +1,10 @@
 import { stripe } from "../../lib/stripe";
-import {
-  ImageContainer,
-  ProductContainer,
-  ProductDetails,
-} from "@/src/styles/pages/products";
-import { GetServerSideProps, GetStaticProps } from "next";
+
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Stripe from "stripe";
 import { ParsedUrlQuery } from 'querystring';
+import { ProductContainer, ImageContainer, ProductDetails } from "../../styles/pages/products";
 
 /** const { isFallback } = useRouter();
   if (isFallback) {
@@ -44,7 +41,22 @@ export default function Product({ products }: ProductsProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<any, { id: string }> = async ({
+export const getStaticPath : GetStaticPaths = async () => { 
+return { 
+    paths: [
+      {
+        params: {
+          id: "prod_NnBi8kGskbRrBU",
+        },
+      },
+    ],
+    fallback: false,
+  };
+}
+
+
+
+export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   params
 }) => {
   //const productId = params.id;

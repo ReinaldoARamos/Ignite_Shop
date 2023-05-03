@@ -7,7 +7,7 @@ import {
 import { GetServerSideProps, GetStaticProps } from "next";
 import Image from "next/image";
 import Stripe from "stripe";
-
+import { ParsedUrlQuery } from 'querystring';
 
 /** const { isFallback } = useRouter();
   if (isFallback) {
@@ -47,8 +47,8 @@ export default function Product({ products }: ProductsProps) {
 export const getServerSideProps: GetServerSideProps<any, { id: string }> = async ({
   params
 }) => {
-  const productId = params.id;
-
+  //const productId = params.id;
+  const productId = (params as ParsedUrlQuery).id;
   const products = await stripe.products.retrieve(productId, {
     expand: ["default_price"],
   });

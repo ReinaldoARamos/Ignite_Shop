@@ -4,16 +4,27 @@ import { ImagesContainer, SucessContainer } from "../styles/pages/sucess";
 import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { stripe } from "../lib/stripe";
+import Stripe from "stripe";
 
-export default function Sucess() {
+interface SucessProps {
+  costumerName: string,
+  products: {
+    name: string,
+    imageUrl: string,
+  }
+}
+
+export default function Sucess({costumerName, products} : SucessProps) {
   return (
     <SucessContainer>
       <h1>Compra efetuada com sucesso</h1>
-      <ImagesContainer></ImagesContainer>
+      <ImagesContainer>
+       <Image src={products.imageUrl} width={120}  height={120} alt=""></Image>
+      </ImagesContainer>
 
       <p>
-        Uhul <strong>Reinaldo Aparecido Ramos</strong>, sua{" "}
-        <strong> camisa ignite</strong> já está a caminho de sua casa!
+        Uhul <strong>{costumerName}</strong>, sua{" "}
+        <strong>{products.name} </strong> já está a caminho de sua casa!
       </p>
       <Link href={"/"}>Voltar ao catálogo</Link>
     </SucessContainer>
@@ -25,11 +36,23 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const sessionId =  String(query.session_id)
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
-    expand: ['line_items']
+    expand: ['line_items', 'line_items.data.price.product']
   })
+
+  const costumerName = session.customer_details.name;
+  const products = session.line_items.data[0].product as Stripe.Product;
+
   console.log(session)
 
   return {
-    props: {},
+    props: {
+      costumerName,
+
+      products: {
+        name: products.name,
+        imageUrl: products.images[0]
+      }
+    
+    },
   };
 };

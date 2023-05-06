@@ -11,6 +11,7 @@ import {
 } from "../../styles/pages/products";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { useState } from "react";
 
 /** const { isFallback } = useRouter();
   if (isFallback) {
@@ -30,9 +31,11 @@ interface ProductsProps {
 }
 
 export default function Product({ products }: ProductsProps) {
-  
+  const [isCreatingCheckout, SetisCreatingCheckout] = useState(false)
   async function handleBuyProduct() {
     try {
+
+      SetisCreatingCheckout(true);
       const response = await axios.post('/api/checkout', {
         priceId: products.defaultPriceId
       })
@@ -40,6 +43,8 @@ export default function Product({ products }: ProductsProps) {
 
         window.location.href = checkoutUrl;
     } catch (error) {
+
+      SetisCreatingCheckout(false);
       alert('falha ao redirecionar ao checkout')
       
     }
@@ -57,7 +62,7 @@ export default function Product({ products }: ProductsProps) {
         <h1> {products.name}</h1>
         <span>{products.price}</span>
         <p>{products.description}</p>
-        <button onClick={handleBuyProduct}>Comprar agora!</button>
+        <button onClick={handleBuyProduct} disabled={isCreatingCheckout}>Comprar agora!</button>
       </ProductDetails>
     </ProductContainer>
   );

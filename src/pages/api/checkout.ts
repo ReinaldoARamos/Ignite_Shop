@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const priceId = "price_1N1bKqAWPPVVTfNWRlSe5Vm4";
+  const {priceId} = req.body
   const successUrl = `${process.env.NEXT_URL}/sucess`;
   const cancelUrl = `${process.env.NEXT_URL}/cancel`;
 

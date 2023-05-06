@@ -24,16 +24,21 @@ interface ProductsProps {
     imageURL: string;
     price: string;
     description: string;
+    defaultPriceId: string;
   };
 }
 
-export default function Product({ products }: ProductsProps ) {
+export default function Product({ products }: ProductsProps) {
+  
+  function handleBuyProduct() {
+    console.log(products.defaultPriceId)
+  }
   const { isFallback } = useRouter();
   if (isFallback) {
     return <p>Loading...</p>;
   }
   return (
-    <ProductContainer >
+    <ProductContainer>
       <ImageContainer>
         <Image src={products.imageURL} alt="" width={520} height={400}></Image>
       </ImageContainer>
@@ -41,13 +46,13 @@ export default function Product({ products }: ProductsProps ) {
         <h1> {products.name}</h1>
         <span>{products.price}</span>
         <p>{products.description}</p>
-        <button>Comprar agora!</button>
+        <button onClick={handleBuyProduct}>Comprar agora!</button>
       </ProductDetails>
     </ProductContainer>
   );
 }
 
-export const getStaticPaths: GetStaticPaths  = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
       {
@@ -60,7 +65,7 @@ export const getStaticPaths: GetStaticPaths  = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<any, { id: string } > = async ({
+export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   params,
 }) => {
   //const productId = params.id;
@@ -83,6 +88,7 @@ export const getStaticProps: GetStaticProps<any, { id: string } > = async ({
           unitDisplay: "long",
           maximumFractionDigits: 2,
         }).format((price.unit_amount as number) / 100),
+        defaultPriceId: price.id,
       },
     },
     //revalidate: 60 * 60 * 1,

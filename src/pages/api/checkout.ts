@@ -6,14 +6,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const priceId = 'price_1N1bJ4AWPPVVTfNW84mYJYag';
+  const priceId = 'price_1N1bKqAWPPVVTfNWRlSe5Vm4';
   const successUrl =  `${process.env.NEXT_URL}/sucess` 
   const cancelUrl = `${process.env.NEXT_URL}/cancel`;
 
   const checkoutSession = await stripe.checkout.sessions.create({
     success_url: successUrl,
     cancel_url: cancelUrl,
-    mode: "subscription",
+    mode: "payment",
 
     line_items: [
       { 

@@ -6,8 +6,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const priceId = 'price_1N1bKqAWPPVVTfNWRlSe5Vm4';
-  const successUrl =  `${process.env.NEXT_URL}/sucess` 
+  const priceId = "price_1N1bKqAWPPVVTfNWRlSe5Vm4";
+  const successUrl = `${process.env.NEXT_URL}/sucess`;
   const cancelUrl = `${process.env.NEXT_URL}/cancel`;
 
   const checkoutSession = await stripe.checkout.sessions.create({
@@ -16,25 +16,12 @@ export default async function handler(
     mode: "payment",
 
     line_items: [
-      { 
-        price: priceId,
-       quantity: 1 }],
-       
-  });
-
-  /*
-  const checkoutSession = await stripe.checkout.session.create({
-    cancel_url: cancelUrl,
-    sucess_url: sucessUrl,
-    mode: 'payment',
-    lineItems: [
       {
         price: priceId,
-        quantity: 1
-      }
-    ]
-  })
-*/
+        quantity: 1,
+      },
+    ],
+  });
   return res.status(201).json({
     checkoutUrl: checkoutSession.url,
   });

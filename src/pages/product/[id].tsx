@@ -10,6 +10,7 @@ import {
   ProductDetails,
 } from "../../styles/pages/products";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 /** const { isFallback } = useRouter();
   if (isFallback) {
@@ -30,8 +31,18 @@ interface ProductsProps {
 
 export default function Product({ products }: ProductsProps) {
   
-  function handleBuyProduct() {
-    console.log(products.defaultPriceId)
+  async function handleBuyProduct() {
+    try {
+      const response = await axios.post('/api/checkout', {
+        priceId: products.defaultPriceId
+      })
+        const { checkoutUrl} = response.data;
+
+        window.location.href = checkoutUrl;
+    } catch (error) {
+      alert('falha ao redirecionar ao checkout')
+      
+    }
   }
   const { isFallback } = useRouter();
   if (isFallback) {

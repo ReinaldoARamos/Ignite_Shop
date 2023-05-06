@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   query
 }) => {
   const sessionId =  String(query.session_id)
-  const session = await stripe.checkout.session.retrieve(sessionId)
+  const session = await stripe.checkout.sessions.retrieve(sessionId)
   console.log(session)
 
   return {

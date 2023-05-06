@@ -7,6 +7,35 @@ export const SucessContainer = styled("main", {
   justifyContent: "center",
   height: 656,
   margin: "0 auto",
+
+  h1: {
+    fontSize: '$2xl',
+    color: '$gray100',
+
+  },
+
+  p: {
+    fontSize: '$xl',
+    color: '$gray300',
+    maxWidth: 560,
+    textAlign: 'center',
+    marginTop: '2rem',
+    lineHeight:  1.4
+  },
+
+  a: {
+    marginTop: '5rem',
+    display: 'block',
+    fontSize: '$l',
+    color:  '$green500',
+    fontWeight: 'bold',
+    
+    '&:hover': {
+        color:  '$green300',
+        cursor: 'pointer'
+    },
+  }
+
 });
 
 export const ImagesContainer = styled("main", {
@@ -19,7 +48,7 @@ export const ImagesContainer = styled("main", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-
+marginTop: '4rem',
   img: {
     objectFit: "cover",
   },

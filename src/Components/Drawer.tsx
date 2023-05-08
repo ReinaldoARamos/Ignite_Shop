@@ -9,12 +9,14 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
+import { useState } from "react";
+import {Bag} from 'phosphor-react'
 const drawerWidth = 240;
+
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -36,7 +38,7 @@ export default function PersistentDrawerLeft() {
           edge="start"
           sx={{ mr: 2, ...(open && { display: "none" }) }}
         >
-          <MenuIcon />
+          <Bag />
         </IconButton>
       </Toolbar>
 

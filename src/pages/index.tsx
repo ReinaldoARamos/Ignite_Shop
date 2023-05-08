@@ -7,6 +7,7 @@ import { stripe } from "../lib/stripe";
 import Stripe from "stripe";
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import { Head } from "next/document";
 
 interface HomeProps {
   products: {
@@ -24,7 +25,12 @@ export default function Home({ products }: HomeProps) {
     },
   });
   return (
+    <>
+ 
+      
+   
     <HomeContainer ref={sliderRef} className="keen-slider">
+      
       {products.map((product) => {
         return (
           <Link key={product.id}
@@ -42,6 +48,7 @@ export default function Home({ products }: HomeProps) {
         );
       })}
     </HomeContainer>
+    </>
   );
 }
 

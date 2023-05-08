@@ -9,6 +9,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { Head } from "next/document";
 
+
 interface HomeProps {
   products: {
     id: string;
@@ -48,6 +49,7 @@ export default function Home({ products }: HomeProps) {
         );
       })}
     </HomeContainer>
+    
     </>
   );
 }

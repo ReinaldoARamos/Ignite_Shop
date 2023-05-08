@@ -8,6 +8,7 @@ import Stripe from "stripe";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { Head } from "next/document";
+import PopOver from "../Components/PopOver/PopOver";
 
 
 interface HomeProps {
@@ -31,7 +32,7 @@ export default function Home({ products }: HomeProps) {
       
    
     <HomeContainer ref={sliderRef} className="keen-slider">
-      
+    <PopOver></PopOver>
       {products.map((product) => {
         return (
           <Link key={product.id}

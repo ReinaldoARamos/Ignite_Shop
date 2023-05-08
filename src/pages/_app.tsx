@@ -18,7 +18,8 @@ import { useState } from "react";
 
  import Image from "next/image";
 import { Bag } from "phosphor-react";
-import PersistentDrawerLeft from "../Components/Drawer";
+import PopOver from "../Components/PopOver/PopOver";
+
 
 
 
@@ -38,11 +39,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <Image src={Logo} alt=" " />
         <div>
           
-          <Bag size={24} />
+
          
         </div>
       </Header>
-      <PersistentDrawerLeft />
+  
      
       <Component {...pageProps} />
     </Container>

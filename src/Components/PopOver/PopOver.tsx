@@ -1,37 +1,23 @@
-import React from 'react';
-import * as Popover from '@radix-ui/react-popover';
-import { styled, keyframes } from '@stitches/react';
-import { violet, mauve, blackA } from '@radix-ui/colors';
-import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
-import { Bag } from 'phosphor-react';
+import React from "react";
+import * as Popover from "@radix-ui/react-popover";
+import { styled, keyframes } from "@stitches/react";
+import { violet, mauve, blackA } from "@radix-ui/colors";
+import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { Bag, ShoppingCart } from "phosphor-react";
 
 const PopoverDemo = () => (
   <Popover.Root>
     <Popover.Trigger asChild>
       <IconButton aria-label="Update dimensions">
-       <Bag size={24} />
+        <Bag size={24} />
       </IconButton>
     </Popover.Trigger>
     <Popover.Portal>
       <PopoverContent sideOffset={5}>
-        <Flex css={{ flexDirection: 'column', gap: 10 }}>
-          <Text css={{ marginBottom: 10 }}>Dimensions</Text>
-          <Fieldset>
-            <Label htmlFor="width">Width</Label>
-            <Input id="width" defaultValue="100%" />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="maxWidth">Max. width</Label>
-            <Input id="maxWidth" defaultValue="300px" />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="height">Height</Label>
-            <Input id="height" defaultValue="25px" />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="maxHeight">Max. height</Label>
-            <Input id="maxHeight" defaultValue="none" />
-          </Fieldset>
+        <Flex css={{ flexDirection: "column", gap: 10 }}>
+          <Text css={{ marginBottom: 10 }}>
+            Carrinho <ShoppingCart />{" "}
+          </Text>
         </Flex>
         <PopoverClose aria-label="Close">
           <Cross2Icon />
@@ -43,119 +29,120 @@ const PopoverDemo = () => (
 );
 
 const slideUpAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(2px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
+  "0%": { opacity: 0, transform: "translateY(2px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" },
 });
 
 const slideRightAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateX(-2px)' },
-  '100%': { opacity: 1, transform: 'translateX(0)' },
+  "0%": { opacity: 0, transform: "translateX(-2px)" },
+  "100%": { opacity: 1, transform: "translateX(0)" },
 });
 
 const slideDownAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateY(-2px)' },
-  '100%': { opacity: 1, transform: 'translateY(0)' },
+  "0%": { opacity: 0, transform: "translateY(-2px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" },
 });
 
 const slideLeftAndFade = keyframes({
-  '0%': { opacity: 0, transform: 'translateX(2px)' },
-  '100%': { opacity: 1, transform: 'translateX(0)' },
+  "0%": { opacity: 0, transform: "translateX(2px)" },
+  "100%": { opacity: 1, transform: "translateX(0)" },
 });
 
 const PopoverContent = styled(Popover.Content, {
   borderRadius: 4,
   padding: 20,
   width: 260,
-  backgroundColor: 'white',
-  boxShadow: 'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
-  animationDuration: '400ms',
-  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-  willChange: 'transform, opacity',
+  height: 400,
+  backgroundColor: "white",
+  boxShadow:
+    "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+  animationDuration: "400ms",
+  animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+  willChange: "transform, opacity",
   '&[data-state="open"]': {
     '&[data-side="top"]': { animationName: slideDownAndFade },
     '&[data-side="right"]': { animationName: slideLeftAndFade },
     '&[data-side="bottom"]': { animationName: slideUpAndFade },
     '&[data-side="left"]': { animationName: slideRightAndFade },
   },
-  '&:focus': {
+  "&:focus": {
     boxShadow: `hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px, 0 0 0 2px ${violet.violet7}`,
   },
 });
 
 const PopoverArrow = styled(Popover.Arrow, {
-  fill: 'white',
+  fill: "white",
 });
 
 const PopoverClose = styled(Popover.Close, {
-  all: 'unset',
-  fontFamily: 'inherit',
-  borderRadius: '100%',
+  all: "unset",
+  fontFamily: "inherit",
+  borderRadius: "100%",
   height: 25,
   width: 25,
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
   color: violet.violet11,
-  position: 'absolute',
+  position: "absolute",
   top: 5,
   right: 5,
 
-  '&:hover': { backgroundColor: violet.violet4 },
-  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
+  "&:hover": { backgroundColor: violet.violet4 },
+  "&:focus": { boxShadow: `0 0 0 2px ${violet.violet7}` },
 });
 
-const Flex = styled('div', { display: 'flex' });
+const Flex = styled("div", { display: "flex" });
 
-const IconButton = styled('button', {
-  all: 'unset',
-  fontFamily: 'inherit',
-  borderRadius: '100%',
+const IconButton = styled("button", {
+  all: "unset",
+  fontFamily: "inherit",
+  borderRadius: "100%",
   height: 35,
   width: 35,
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: '$gray100',
-  
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "$gray100",
+
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
-  
 });
-const Fieldset = styled('fieldset', {
-  all: 'unset',
-  display: 'flex',
+const Fieldset = styled("fieldset", {
+  all: "unset",
+  display: "flex",
   gap: 20,
-  alignItems: 'center',
+  alignItems: "center",
 });
 
-const Label = styled('label', {
+const Label = styled("label", {
   fontSize: 13,
   color: violet.violet11,
   width: 75,
 });
 
-const Input = styled('input', {
-  all: 'unset',
-  width: '100%',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flex: '1',
+const Input = styled("input", {
+  all: "unset",
+  width: "100%",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flex: "1",
   borderRadius: 4,
-  padding: '0 10px',
+  padding: "0 10px",
   fontSize: 13,
   lineHeight: 1,
   color: violet.violet11,
   boxShadow: `0 0 0 1px ${violet.violet7}`,
   height: 25,
 
-  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet8}` },
+  "&:focus": { boxShadow: `0 0 0 2px ${violet.violet8}` },
 });
 
-const Text = styled('p', {
+const Text = styled("p", {
   margin: 0,
   color: mauve.mauve12,
   fontSize: 15,
-  lineHeight: '19px',
+  lineHeight: "19px",
   fontWeight: 500,
 });
 

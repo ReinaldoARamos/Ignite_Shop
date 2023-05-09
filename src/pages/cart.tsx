@@ -9,7 +9,7 @@ import { Head } from "next/document";
 import Camisa1 from '../assets/Camisas/Camisa 1.png'
 import Camisa2 from '../assets/Camisas/Camisa 2.png'
 import Camisa3 from '../assets/Camisas/Camisa 3.png'
-import { ImagesContainer, SucessContainer } from "../styles/pages/Cart";
+import { ImagesContainer, SucessContainer } from "../styles/pages/sucesscart";
 
 /*
 interface SucessProps {
@@ -31,11 +31,23 @@ export default function Cart() {
         height={120}
         alt=""
       ></Image>
+      <Image
+        src={Camisa2}
+        width={120}
+        height={120}
+        alt=""
+      ></Image>
+      <Image
+        src={Camisa3}
+        width={120}
+        height={120}
+        alt=""
+      ></Image>
     </ImagesContainer>
 
     <p>
-      Uhul <strong>Reinaldo</strong>, sua{" "}
-      <strong>asdads </strong> já está a caminho de sua casa!
+      Uhul <strong>Reinaldo</strong>, suas{" "}
+      <strong>3 camisas </strong> já está a caminho de sua casa!
     </p>
     <Link href={"/"}>Voltar ao catálogo</Link>
   </SucessContainer>

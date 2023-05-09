@@ -40,17 +40,21 @@ export const SucessContainer = styled("main", {
 });
 
 export const ImagesContainer = styled("main", {
+ 
   width: "100%",
   maxWidth: 130,
   height: 145,
-  background: "linear-gradient(100deg, #1ea483 0%, #7465d4 100%)",
-  borderRadius: 8,
   padding: "0.25rem",
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
   alignItems: "center",
+  justifyContent: "center",
 marginTop: '4rem',
   img: {
     objectFit: "cover",
+    background: "linear-gradient(100deg, #1ea483 0%, #7465d4 100%)",
+    borderRadius: 999,
+    marginLeft: '-3rem' 
+  
   },
 });

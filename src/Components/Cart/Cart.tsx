@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Camisa1 from "../../assets/Camisas/Camisa 1.png";
-import { ImageContainer, ProductContainer, ProductContent } from "@/src/styles/components/Cart";
+import { ImageContainer, ProductContainer, ProductContent, Quantity } from "@/src/styles/components/Cart";
 export default function CartItem() {
   return (
     <ProductContainer>
@@ -14,7 +14,7 @@ export default function CartItem() {
       <main>R$: 89.90</main>
       <div>Remover</div>
       </ProductContent>
-       
+   
     </ProductContainer>
   );
 }

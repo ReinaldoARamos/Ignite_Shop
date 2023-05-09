@@ -5,6 +5,7 @@ import { violet, mauve, blackA } from "@radix-ui/colors";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { Bag, ShoppingCart } from "phosphor-react";
 import CartItem from "../Cart/Cart";
+import { Purchase, Quantity, Total } from "@/src/styles/components/Cart";
 
 const PopoverDemo = () => (
   <Popover.Root>
@@ -14,16 +15,31 @@ const PopoverDemo = () => (
       </IconButton>
     </Popover.Trigger>
     <Popover.Portal>
-      <PopoverContent sideOffset={5} css={{backgroundColor: '$gray800' }}>
+      <PopoverContent sideOffset={5} css={{ backgroundColor: "$gray800" }}>
         <Flex css={{ flexDirection: "column", gap: 10 }}>
-          <Text css={{ marginBottom: 10, color:'$gray100', fontWeight: "bold"   }}>
+          <Text
+            css={{ marginBottom: 10, color: "$gray100", fontWeight: "bold" }}
+          >
             Sacola de Compras{" "}
           </Text>
           <CartItem />
           <CartItem />
           <CartItem />
+          <Quantity>
+            <section> Quantidade: </section>
+            <main> 3 items: </main>
+          </Quantity>
+
+          <Total>
+            <div>Total:</div>
+            <main> R$: 270.00</main>
+          </Total>
+          <Purchase> Finalizar Compra</Purchase>
         </Flex>
-        <PopoverClose aria-label="Close" css={{ border: 'none', outline: "hidden"}} > 
+        <PopoverClose
+          aria-label="Close"
+          css={{ border: "none", outline: "hidden" }}
+        >
           <Cross2Icon />
         </PopoverClose>
         <PopoverArrow />
@@ -53,11 +69,10 @@ const slideLeftAndFade = keyframes({
 });
 
 const PopoverContent = styled(Popover.Content, {
-
   borderRadius: 10,
   padding: 20,
   width: 300,
-  height: 500,
+  height: 600,
   backgroundColor: "white",
   boxShadow:
     "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
@@ -88,16 +103,15 @@ const PopoverClose = styled(Popover.Close, {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  color: '$green500',
+  color: "$green500",
   position: "absolute",
   top: 5,
   right: 5,
-  cursor: 'pointer',
-  "&:hover": { color: '$green300' },
- 
+  cursor: "pointer",
+  "&:hover": { color: "$green300" },
 });
 
-const Flex = styled("div", { display: "flex"});
+const Flex = styled("div", { display: "flex" });
 
 const IconButton = styled("button", {
   all: "unset",

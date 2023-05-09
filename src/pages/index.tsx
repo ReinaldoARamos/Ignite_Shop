@@ -32,7 +32,7 @@ export default function Home({ products }: HomeProps) {
       
    
     <HomeContainer ref={sliderRef} className="keen-slider">
-    <PopOver></PopOver>
+   
       {products.map((product) => {
         return (
           <Link key={product.id}

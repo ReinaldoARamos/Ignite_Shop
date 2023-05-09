@@ -37,8 +37,9 @@ export default function App({ Component, pageProps }: AppProps) {
     
       <Header>
         <Image src={Logo} alt=" " />
+
         <div>
-          
+         <PopOver></PopOver>  
 
          
         </div>

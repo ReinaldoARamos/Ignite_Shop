@@ -3,12 +3,13 @@ import * as Popover from '@radix-ui/react-popover';
 import { styled, keyframes } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
 import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
+import { Bag } from 'phosphor-react';
 
 const PopoverDemo = () => (
   <Popover.Root>
     <Popover.Trigger asChild>
       <IconButton aria-label="Update dimensions">
-        <MixerHorizontalIcon />
+       <Bag size={24} />
       </IconButton>
     </Popover.Trigger>
     <Popover.Portal>
@@ -114,11 +115,10 @@ const IconButton = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: violet.violet11,
-  backgroundColor: 'white',
+  color: '$gray100',
+  
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
-  '&:hover': { backgroundColor: violet.violet3 },
-  '&:focus': { boxShadow: `0 0 0 2px black` },
+  
 });
 const Fieldset = styled('fieldset', {
   all: 'unset',

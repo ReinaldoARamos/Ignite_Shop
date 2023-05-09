@@ -4,6 +4,7 @@ import { styled, keyframes } from "@stitches/react";
 import { violet, mauve, blackA } from "@radix-ui/colors";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { Bag, ShoppingCart } from "phosphor-react";
+import CartItem from "../Cart/Cart";
 
 const PopoverDemo = () => (
   <Popover.Root>
@@ -13,13 +14,16 @@ const PopoverDemo = () => (
       </IconButton>
     </Popover.Trigger>
     <Popover.Portal>
-      <PopoverContent sideOffset={5}>
+      <PopoverContent sideOffset={5} css={{backgroundColor: '$gray800' }}>
         <Flex css={{ flexDirection: "column", gap: 10 }}>
-          <Text css={{ marginBottom: 10 }}>
-            Carrinho <ShoppingCart />{" "}
+          <Text css={{ marginBottom: 10, color:'$gray100', fontWeight: "bold"   }}>
+            Sacola de Compras{" "}
           </Text>
+          <CartItem />
+          <CartItem />
+          <CartItem />
         </Flex>
-        <PopoverClose aria-label="Close">
+        <PopoverClose aria-label="Close" css={{ border: 'none', outline: "hidden"}} > 
           <Cross2Icon />
         </PopoverClose>
         <PopoverArrow />
@@ -49,10 +53,11 @@ const slideLeftAndFade = keyframes({
 });
 
 const PopoverContent = styled(Popover.Content, {
-  borderRadius: 4,
+
+  borderRadius: 10,
   padding: 20,
-  width: 260,
-  height: 400,
+  width: 300,
+  height: 500,
   backgroundColor: "white",
   boxShadow:
     "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
@@ -83,16 +88,16 @@ const PopoverClose = styled(Popover.Close, {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
-  color: violet.violet11,
+  color: '$green500',
   position: "absolute",
   top: 5,
   right: 5,
-
-  "&:hover": { backgroundColor: violet.violet4 },
-  "&:focus": { boxShadow: `0 0 0 2px ${violet.violet7}` },
+  cursor: 'pointer',
+  "&:hover": { color: '$green300' },
+ 
 });
 
-const Flex = styled("div", { display: "flex" });
+const Flex = styled("div", { display: "flex"});
 
 const IconButton = styled("button", {
   all: "unset",

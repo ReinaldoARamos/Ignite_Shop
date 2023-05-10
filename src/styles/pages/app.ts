@@ -29,10 +29,13 @@ export const Header = styled("header", {
     cursor: "pointer",
     transition: '0.4s',
 
+    
     svg: {
       color: "$gray500",
     },
-
+    a:{
+      color: "$gray500",
+    },
     "&:hover": {
       svg: {
         color: "$gray300",

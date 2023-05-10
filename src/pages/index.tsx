@@ -10,7 +10,7 @@ import Link from "next/link";
 import { Head } from "next/document";
 import PopOver from "../Components/PopOver/PopOver";
 import { useContext } from "react";
-import Cart from "./productsTest";
+import Cart from "./cart";
 //import { CartContext } from "../context/context";
 
 interface HomeProps {

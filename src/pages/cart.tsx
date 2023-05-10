@@ -1,91 +1,97 @@
 import Image from "next/image";
-//mport { ImageContainer } from "../styles/pages/products";
+import Stripe from "stripe";
+import { GetStaticProps } from "next";
+ 
+import { stripe } from "@/src/lib/stripe";
+import { CartContainer, ImageContainer, ProductContainer, ProductContent, Purchase, Quantity, Summary, Total } from "../styles/pages/cart";
 
-import Link from "next/link";
-//import { GetServerSideProps } from "next";
-//import { stripe } from "../lib/stripe";
- //import Stripe from "stripe";
-import { Head } from "next/document";
-import Camisa1 from '../assets/Camisas/Camisa 1.png'
-import Camisa2 from '../assets/Camisas/Camisa 2.png'
-import Camisa3 from '../assets/Camisas/Camisa 3.png'
-import { ImagesContainer, SucessContainer } from "../styles/pages/sucesscart";
 
-/*
-interface SucessProps {
-  costumerName: string;
+//import { CartContext } from "../context/context";
+
+interface CartProps {
   products: {
+    id: string;
     name: string;
-    imageUrl: string;
-  };
+    imageURL: string;
+    price: number;
+  }[];
 }
-*/
-export default function Cart() {
+export default function Cart({ products }: CartProps) {
+  
   return (
-    <SucessContainer>
-    <h1>Compra efetuada com sucesso</h1>
-    <ImagesContainer>
-      <Image
-        src={Camisa1}
-        width={120}
-        height={120}
-        alt=""
-      ></Image>
-      <Image
-        src={Camisa2}
-        width={120}
-        height={120}
-        alt=""
-      ></Image>
-      <Image
-        src={Camisa3}
-        width={120}
-        height={120}
-        alt=""
-      ></Image>
-    </ImagesContainer>
+    <>
 
-    <p>
-      Uhul <strong>Reinaldo</strong>, suas{" "}
-      <strong>3 camisas </strong> já está a caminho de sua casa!
-    </p>
-    <Link href={"/"}>Voltar ao catálogo</Link>
-  </SucessContainer>
+      <CartContainer>
+        {products.map((product) => {
+          return (
+            <>
+            <ProductContainer>
+            <ImageContainer>
+            <Image src={product.imageURL} alt="" width={240} height={240} />
+          </ImageContainer>
+          <ProductContent>
+          <h4>{product.name}</h4>
+          <main>{product.price}</main>
+          <div>Remover</div>
+          </ProductContent>
+            </ProductContainer>
+          
+          </>
+          );
+        })}
+      </CartContainer>
+<Summary>
+<Quantity>
+            <section> Quantidade: </section>
+            <main> 3 items</main>
+          </Quantity>
+
+          <Total>
+            <div>Total: </div>
+            <main> R$: 270.00</main>
+          </Total>
+          <Purchase> Finalizar Compra</Purchase>
+</Summary>
+    
+    </>
   );
 }
 
-/*
-
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  if (!query.session_id) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-
-  const sessionId = String(query.session_id);
-
-  const session = await stripe.checkout.sessions.retrieve(sessionId, {
-    expand: ["line_items", "line_items.data.price.product"],
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await stripe.products.list({
+    expand: ["data.default_price"],
   });
+  console.log(response.data);
 
-  const costumerName = session.customer_details.name;
-  const products = session.line_items.data[0].price.product as Stripe.Product;
+  const products = response.data.map(
+    (product: {
+      default_price: Stripe.Price;
+      id: any;
+      name: any;
+      description: any;
+      images: any[];
+    }) => {
+      const price = product.default_price as Stripe.Price;
 
-  console.log(session);
+      return {
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        imageURL: product.images[0],
+        price: new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+          unitDisplay: "long",
+          maximumFractionDigits: 2,
+        }).format((price.unit_amount as number) / 100),
+      };
+    }
+  );
 
   return {
     props: {
-      costumerName,
-
-      products: {
-        name: products.name,
-        imageUrl: products.images[0],
-      },
+      products,
     },
+    revalidate: 60 * 60 * 2, //a cada duas horas
   };
 };
-*/

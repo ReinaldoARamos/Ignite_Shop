@@ -1,19 +1,23 @@
 import { styled } from "..";
 
-export const ProductContainer = styled("main", {
+export const CartContainer = styled("main", {
     gap: "1rem",
     margin: "0 auto",
     maxWidth: 1180,
     display: "flex",
+    flexDirection:'column',
 
-    justifyContent: "flex-start",
-    paddingRight: "6rem",
+    paddingRight: "35rem",
+});
+
+export const ProductContainer = styled("main", {
+   display: 'flex',
+   gap: '1rem',
 });
 export const ImageContainer = styled("div", {
     marginBottom: "1.5rem",
-    width: "100%",
-    maxWidth: 95,
-    height: 95,
+    width: 240,
+    height: 240,
     background: "linear-gradient(100deg, #1ea483 0%, #7465d4 100%) ",
     borderRadius: 8,
     padding: "0.25rem",
@@ -26,26 +30,27 @@ export const ImageContainer = styled("div", {
 });
 
 export const ProductContent = styled("div", {
+ 
     paddingLeft: 5,
-    maxWidth: 265,
-    width: 200,
-    maxHeight: 103,
+    maxWidth: 315,
+
+    maxHeight: 240,
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     h4: {
         color: "$gray300",
-        fontSize: "$md",
+        fontSize: "$2xl",
         marginBottom: 1,
     },
 
     main: {
-        fontSize: "$lg",
+        fontSize: "$2xl",
         fontWeight: "bold",
     },
 
     div: {
-        fontSize: "$md",
+        fontSize: "$lg",
         color: "$green300",
         cursor: "pointer",
         transition: "0.2s",
@@ -55,20 +60,35 @@ export const ProductContent = styled("div", {
     },
 });
 
+export const Summary = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '3rem',
+
+    paddingLeft: '56rem'
+})
 export const Quantity = styled("div", {
     display: "flex",
+    width: '100%' ,
     justifyContent: "space-between",
-
-
+    fontSize: "$2xl",
+    marginTop: '0.5rem'
 });
 
 export const Total = styled("div", {
+  
+    width: '100%' ,
     display: "flex",
     justifyContent: "space-between",
-
+div: {
+    fontSize: "$2xl",
+},
     main: {
-        fontSize: "$lg",
+        fontSize: "$2xl",
         fontWeight: "bold",
+        
     }
 
 

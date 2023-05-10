@@ -4,8 +4,8 @@ import { styled, keyframes } from "@stitches/react";
 import { violet, mauve, blackA } from "@radix-ui/colors";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { Bag, ShoppingCart } from "phosphor-react";
-import { Purchase, Quantity, Total } from "@/src/styles/components/Cart";
-import Cart from "@/src/pages/productsTest";
+import { Purchase, Quantity, Total } from "@/src/styles/pages/cart";
+import Cart from "@/src/pages/cart";
 import Home from "@/src/pages";
 
 

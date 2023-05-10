@@ -100,7 +100,8 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
 
   return {
     props: {
-      products: {
+      products:
+       {
         id: products.id,
         name: products.name,
         description: products.description,

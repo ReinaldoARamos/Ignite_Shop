@@ -19,7 +19,7 @@ import { useState } from "react";
   }
    */
 
-interface ProductsProps {
+export interface ProductsProps {
   products: {
     id: string;
     name: string;

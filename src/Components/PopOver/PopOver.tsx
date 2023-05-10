@@ -4,8 +4,9 @@ import { styled, keyframes } from "@stitches/react";
 import { violet, mauve, blackA } from "@radix-ui/colors";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { Bag, ShoppingCart } from "phosphor-react";
-import CartItem from "../Cart/Cart";
 import { Purchase, Quantity, Total } from "@/src/styles/components/Cart";
+import Cart from "@/src/pages/productsTest";
+
 
 const PopoverDemo = () => (
   <Popover.Root>
@@ -22,9 +23,8 @@ const PopoverDemo = () => (
           >
             Sacola de Compras{" "}
           </Text>
-          <CartItem />
-          <CartItem />
-          <CartItem />
+       <Cart products={[0, 1, 2]} />
+          
           <Quantity>
             <section> Quantidade: </section>
             <main> 3 items: </main>

@@ -26,7 +26,7 @@ GlobalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  const [teste, setTeste] = useState('Teste')
+
   return (
     <>
 

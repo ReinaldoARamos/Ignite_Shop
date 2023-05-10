@@ -1,18 +1,14 @@
-import { HomeContainer, Product } from "../styles/pages/home";
 import Image from "next/image";
 import { useKeenSlider } from "keen-slider/react";
 
-import "keen-slider/keen-slider.min.css";
-import { stripe } from "../lib/stripe";
 import Stripe from "stripe";
 import { GetStaticProps } from "next";
-import Link from "next/link";
-import { Head } from "next/document";
-import PopOver from "../Components/PopOver/PopOver";
-import { useContext } from "react";
+import { ImageContainer, ProductContainer, ProductContent } from "@/src/styles/components/Cart";
+import { stripe } from "@/src/lib/stripe";
+
 //import { CartContext } from "../context/context";
 
-interface HomeProps {
+interface CartProps {
   products: {
     id: string;
     name: string;
@@ -20,35 +16,26 @@ interface HomeProps {
     price: number;
   }[];
 }
-export default function Home({ products }: HomeProps) {
-  const [sliderRef] = useKeenSlider({
-    slides: {
-      perView: 3,
-      spacing: 48,
-    },
-  });
-
+export default function Cart({ products }: CartProps) {
+  
   return (
     <>
-      <HomeContainer ref={sliderRef} className="keen-slider">
+      <ProductContainer>
         {products.map((product) => {
           return (
-            <Link
-              key={product.id}
-              href={`product/${product.id}`}
-              prefetch={false}
-            >
-              <Product className="keen-slider__slide">
-                <Image src={product.imageURL} alt="" width={520} height={400} />
-                <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </footer>
-              </Product>
-            </Link>
+            <>
+            <ImageContainer>
+            <Image src={product.imageURL} alt="" width={95} height={95} />
+          </ImageContainer>
+          <ProductContent>
+          <h4>{product.name}</h4>
+          <main>{product.price}</main>
+          <div>Remover</div>
+          </ProductContent>
+          </>
           );
         })}
-      </HomeContainer>
+      </ProductContainer>
     </>
   );
 }

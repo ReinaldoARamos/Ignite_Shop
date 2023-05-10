@@ -19,10 +19,14 @@ import Image from "next/image";
 import { Bag } from "phosphor-react";
 import PopOver from "../Components/PopOver/PopOver";
 import { CartProvider } from "use-shopping-cart";
+import CartContext from "../context/context";
+
 
 GlobalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
+
+  const [teste, setTeste] = useState('Teste')
   return (
     <>
 
@@ -45,14 +49,18 @@ export default function App({ Component, pageProps }: AppProps) {
     >
     <Container>
       <Header>
-        <Image src={Logo} alt=" " />
+        <a href="/">
+        <Image src={Logo} alt=" "  />
+        </a>
+    
 
         <div>
           <PopOver />
         </div>
       </Header>
-
+   
       <Component {...pageProps} />
+
     </Container>
     </CartProvider>
 

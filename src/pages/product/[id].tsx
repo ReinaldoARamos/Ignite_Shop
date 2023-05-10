@@ -11,13 +11,10 @@ import {
 } from "../../styles/pages/products";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CartContext from "@/src/context/context";
 
-/** const { isFallback } = useRouter();
-  if (isFallback) {
-    return "loading";
-  }
-   */
+   
 
 export interface ProductsProps {
   products: {
@@ -31,7 +28,13 @@ export interface ProductsProps {
 }
 
 export default function Product({ products }: ProductsProps) {
+
   const [isCreatingCheckout, SetisCreatingCheckout] = useState(false)
+ const {teste} = useContext(CartContext)
+  
+ function VamosTestar() {
+   console.log(teste)
+ }
   async function handleBuyProduct() {
     try {
 
@@ -49,10 +52,14 @@ export default function Product({ products }: ProductsProps) {
       
     }
   }
+  
+
+ 
   const { isFallback } = useRouter();
   if (isFallback) {
     return <p>Loading...</p>;
   }
+
   return (
     <ProductContainer>
       <ImageContainer>
@@ -62,7 +69,7 @@ export default function Product({ products }: ProductsProps) {
         <h1> {products.name}</h1>
         <span>{products.price}</span>
         <p>{products.description}</p>
-        <button onClick={handleBuyProduct} disabled={isCreatingCheckout}>Colocar na Sacola</button>
+        <button onClick={handleBuyProduct}  disabled={isCreatingCheckout}>Colocar na Sacola</button>
       </ProductDetails>
     </ProductContainer>
   );

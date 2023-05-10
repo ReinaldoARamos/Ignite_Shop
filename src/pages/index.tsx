@@ -9,6 +9,8 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { Head } from "next/document";
 import PopOver from "../Components/PopOver/PopOver";
+import { useContext } from "react";
+//import { CartContext } from "../context/context";
 
 
 interface HomeProps {
@@ -20,12 +22,17 @@ interface HomeProps {
   }[];
 }
 export default function Home({ products }: HomeProps) {
+
   const [sliderRef] = useKeenSlider({
+
     slides: {
       perView: 3,
       spacing: 48,
     },
   });
+
+
+
   return (
     <>
  

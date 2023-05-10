@@ -5,6 +5,9 @@ import Stripe from "stripe";
 import { GetStaticProps } from "next";
 import { ImageContainer, ProductContainer, ProductContent } from "@/src/styles/components/Cart";
 import { stripe } from "@/src/lib/stripe";
+import PopoverDemo from "../Components/PopOver/PopOver";
+import PopOver from "../Components/PopOver/PopOver";
+
 
 //import { CartContext } from "../context/context";
 
@@ -20,6 +23,7 @@ export default function Cart({ products }: CartProps) {
   
   return (
     <>
+
       <ProductContainer>
         {products.map((product) => {
           return (

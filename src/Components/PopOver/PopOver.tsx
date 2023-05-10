@@ -6,6 +6,7 @@ import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { Bag, ShoppingCart } from "phosphor-react";
 import { Purchase, Quantity, Total } from "@/src/styles/components/Cart";
 import Cart from "@/src/pages/productsTest";
+import Home from "@/src/pages";
 
 
 const PopoverDemo = () => (
@@ -23,7 +24,7 @@ const PopoverDemo = () => (
           >
             Sacola de Compras{" "}
           </Text>
-       <Cart products={[0, 1, 2]} />
+
           
           <Quantity>
             <section> Quantidade: </section>
@@ -168,3 +169,4 @@ const Text = styled("p", {
 });
 
 export default PopoverDemo;
+

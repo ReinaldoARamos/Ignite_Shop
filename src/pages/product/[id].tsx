@@ -23,9 +23,9 @@ export interface ProductProp {
 
 
 
-export default function Product({ products }: ProductsProps) {
+export default function Product({ products }: ProductProp) {
   const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
- 
+ const {addToCart} = useContext(CartContext)
 
   async function handleBuyProduct() {
     try {
@@ -47,7 +47,7 @@ export default function Product({ products }: ProductsProps) {
     return <p>Loading...</p>;
   }
 
-  
+ 
 
   return (
     <ProductContainer>
@@ -59,6 +59,7 @@ export default function Product({ products }: ProductsProps) {
         <span>{products.price}</span>
         <p>{products.description}</p>
         <button 
+        onClick={() => addToCart(products)}
          disabled={isCreatingCheckout}>
           Colocar na Sacola
         </button>

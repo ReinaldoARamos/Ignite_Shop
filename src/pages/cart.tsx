@@ -12,9 +12,9 @@ import {
 import Camisa1 from "../../src/assets/Camisas/Camisa 1.png";
 import Camisa2 from "../../src/assets/Camisas/Camisa 1.png";
 import Camisa3 from "../../src/assets/Camisas/Camisa 1.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
-import { ProductsProps } from "../context/context";
+import { CartContext, ProductsProps } from "../context/context";
 
 
 //import { CartContext } from "../context/context";
@@ -26,23 +26,32 @@ export interface CartProps {
 
 
 
-export default function Cart({ cartItems }: CartProps) {
-
+export default function Cart() {
+const { cartItems} = useContext(CartContext)
 return (
   <>
     <CartContainer>
-      <ProductContainer>
-        <ImageContainer>
-          <Image src={Camisa1} alt="" width={240} height={240} />
-        </ImageContainer>
-        <ProductContent>
-          <h4>aws</h4>
-          <main>RS 123.00</main>
-          <div>Remover</div>
-         
-        </ProductContent>
-      </ProductContainer>
+    {cartItems.map((item) => {
+          return (
+           
+     <ProductContainer>
+     <ImageContainer>
+       <Image src={item.imageURL} alt="" width={240} height={240} />
+     </ImageContainer>
+     <ProductContent>
+       <h4>{item.name}</h4>
+       <main>{item.price}</main>
+       <div>Remover</div>
+      
+     </ProductContent>
+   </ProductContainer>
+          );
+        })}
     </CartContainer>
+
+
+
+    
     <Summary>
       <Quantity>
         <section> Quantidade: </section>
@@ -59,6 +68,20 @@ return (
 );
 }
 
+
+/*
+     <ProductContainer>
+        <ImageContainer>
+          <Image src={Camisa1} alt="" width={240} height={240} />
+        </ImageContainer>
+        <ProductContent>
+          <h4>aws</h4>
+          <main>RS 123.00</main>
+          <div>Remover</div>
+         
+        </ProductContent>
+      </ProductContainer>
+* */
 /*
 
 export const getStaticProps: GetStaticProps = async () => {

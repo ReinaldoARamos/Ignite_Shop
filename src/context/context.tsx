@@ -2,19 +2,13 @@ import { Key, ReactNode, createContext, useState } from "react";
 
 
 export interface ProductsProps {
-  price: ReactNode;
-  name: ReactNode;
+  defaultPriceId: any;
+  description: ReactNode;
+  price: string;
+  name: string;
   imageURL: string;
-  id: Key;
-  products: {
-    id: string;
-    name: string;
-    imageURL: string;
-    price: string ;
-    description: string;
-    defaultPriceId: string;
-   
-  };
+  id: string,
+
 }
 
 export interface CartContextType{
@@ -34,8 +28,9 @@ interface CartContextProviderProps  {
   const [cartItems, setCartItems] = useState<ProductsProps[]>([]);
 
 
-  function addToCart(products: ProductsProps) {
+  function addToCart(products: ProductsProps ) {
     setCartItems((state) => [...state, products]);
+    console.log(products);
   }
   return (
     <CartContext.Provider value={{ cartItems, addToCart }}>

@@ -14,18 +14,10 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 import { CartProps } from "../cart";
-import { CartContext, ContextProvider } from "@/src/context/context";
+import { CartContext, ContextProvider, ProductsProps } from "@/src/context/context";
 
-export interface ProductsProps {
-  products: {
-    id: string;
-    name: string;
-    imageURL: string;
-    price: string ;
-    description: string;
-    defaultPriceId: string;
-   
-  };
+export interface ProductProp {
+ products: ProductsProps
 }
 
 
@@ -33,27 +25,7 @@ export interface ProductsProps {
 
 export default function Product({ products }: ProductsProps) {
   const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
- const {teste} = useContext(CartContext)
-
- function Hi() {
-  teste();
- }
-  function Teste() {
-    const test = [{
-      name: products.name,
-      price: products.price
-    },
-    {
-      name: products.name,
-      price: products.price
-    },
-    {
-      name: products.name,
-     price: products.price
-    },
-  ]
-    console.log(test);
-  }
+ 
 
   async function handleBuyProduct() {
     try {
@@ -87,7 +59,6 @@ export default function Product({ products }: ProductsProps) {
         <span>{products.price}</span>
         <p>{products.description}</p>
         <button 
-         onClick={Hi} 
          disabled={isCreatingCheckout}>
           Colocar na Sacola
         </button>

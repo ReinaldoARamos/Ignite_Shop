@@ -14,14 +14,13 @@ import Camisa2 from "../../src/assets/Camisas/Camisa 1.png";
 import Camisa3 from "../../src/assets/Camisas/Camisa 1.png";
 import { useState } from "react";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
-import { ProductsProps } from "./product/[id]";
+import { ProductsProps } from "../context/context";
+
 
 //import { CartContext } from "../context/context";
 
 export interface CartProps {
-  cartItems: ProductsProps[
-
-  ],
+  cartItems: ProductsProps[],
 
 }
 

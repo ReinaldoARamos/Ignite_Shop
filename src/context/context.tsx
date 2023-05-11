@@ -1,9 +1,5 @@
 import { Key, ReactNode, createContext, useState } from "react";
-//
 
-//import { ProductsProps } from "../pages/product/[id]";
-
-//export interface CartItem extends ProductsProps {}
 
 export interface ProductsProps {
   price: ReactNode;
@@ -21,15 +17,14 @@ export interface ProductsProps {
   };
 }
 
-export interface CartData{
-cartItems: ProductsProps[]
-}
-interface CartContextType {
-  cartItems: ProductsProps[],
-  teste: () => void
+export interface CartContextType{
+cartItems: ProductsProps[],
+addToCart: (product: ProductsProps) => void;
 }
 
-interface CartContextProviderProps {
+
+
+interface CartContextProviderProps  {
   children: ReactNode;
 }
 
@@ -38,11 +33,12 @@ interface CartContextProviderProps {
  export function ContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<ProductsProps[]>([]);
 
-  function teste() {
-    console.log("hi")
+
+  function addToCart(products: ProductsProps) {
+    setCartItems((state) => [...state, products]);
   }
   return (
-    <CartContext.Provider value={{ cartItems, teste }}>
+    <CartContext.Provider value={{ cartItems, addToCart }}>
       {children}
     </CartContext.Provider>
   );

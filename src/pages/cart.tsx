@@ -1,10 +1,18 @@
 import Image from "next/image";
-import Stripe from "stripe";
-import { GetStaticProps } from "next";
- 
-import { stripe } from "@/src/lib/stripe";
-import { CartContainer, ImageContainer, ProductContainer, ProductContent, Purchase, Quantity, Summary, Total } from "../styles/pages/cart";
-
+import {
+  CartContainer,
+  ImageContainer,
+  ProductContainer,
+  ProductContent,
+  Purchase,
+  Quantity,
+  Summary,
+  Total,
+} from "../styles/pages/cart";
+import Camisa1 from "../../src/assets/Camisas/Camisa 1.png";
+import Camisa2 from "../../src/assets/Camisas/Camisa 1.png";
+import Camisa3 from "../../src/assets/Camisas/Camisa 1.png";
+import { useState } from "react";
 
 //import { CartContext } from "../context/context";
 
@@ -17,45 +25,39 @@ interface CartProps {
   }[];
 }
 export default function Cart({ products }: CartProps) {
-  
+
+  const [cart, setCart] = useState<CartProps[]>([])
   return (
     <>
-
       <CartContainer>
-        {products.map((product) => {
-          return (
-            <>
-            <ProductContainer>
-            <ImageContainer>
-            <Image src={product.imageURL} alt="" width={240} height={240} />
+        <ProductContainer>
+          <ImageContainer>
+            <Image src={Camisa1} alt="" width={240} height={240} />
           </ImageContainer>
           <ProductContent>
-          <h4>{product.name}</h4>
-          <main>{product.price}</main>
-          <div>Remover</div>
+            <h4>Camisa Igite</h4>
+            <main>RS 123.00</main>
+            <div>Remover</div>
           </ProductContent>
-            </ProductContainer>
-          
-          </>
-          );
-        })}
+        </ProductContainer>
       </CartContainer>
-<Summary>
-<Quantity>
-            <section> Quantidade: </section>
-            <main> 3 items</main>
-          </Quantity>
+      <Summary>
+        <Quantity>
+          <section> Quantidade: </section>
+          <main> 3 items</main>
+        </Quantity>
 
-          <Total>
-            <div>Total: </div>
-            <main> R$: 270.00</main>
-          </Total>
-          <Purchase> Finalizar Compra</Purchase>
-</Summary>
-    
+        <Total>
+          <div>Total: </div>
+          <main> R$: 270.00</main>
+        </Total>
+        <Purchase> Finalizar Compra</Purchase>
+      </Summary>
     </>
   );
 }
+
+/*
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
@@ -74,6 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
       const price = product.default_price as Stripe.Price;
 
       return {
+        
         id: product.id,
         name: product.name,
         description: product.description,
@@ -95,3 +98,4 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 2, //a cada duas horas
   };
 };
+* */

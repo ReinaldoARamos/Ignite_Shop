@@ -13,8 +13,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useContext, useState } from "react";
 import CartContext from "@/src/context/context";
-
-   
+import { useShoppingCart } from "use-shopping-cart";
 
 export interface ProductsProps {
   products: {
@@ -28,33 +27,25 @@ export interface ProductsProps {
 }
 
 export default function Product({ products }: ProductsProps) {
+  const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
+  const {addItem} = useShoppingCart();
 
-  const [isCreatingCheckout, SetisCreatingCheckout] = useState(false)
- const {teste} = useContext(CartContext)
-  
- function VamosTestar() {
-   console.log(teste)
- }
+
   async function handleBuyProduct() {
     try {
-
       SetisCreatingCheckout(true);
-      const response = await axios.post('/api/checkout', {
-        priceId: products.defaultPriceId
-      })
-        const { checkoutUrl} = response.data;
-
-        window.location.href = checkoutUrl;
+      const response = await axios.post("/api/checkout", {
+        priceId: products.defaultPriceId,
+      });
+      const { checkoutUrl } = response.data;
+      console.log(response.data)
+      window.location.href = checkoutUrl;
     } catch (error) {
-
       SetisCreatingCheckout(false);
-      alert('falha ao redirecionar ao checkout')
-      
+      alert("falha ao redirecionar ao checkout");
     }
   }
-  
 
- 
   const { isFallback } = useRouter();
   if (isFallback) {
     return <p>Loading...</p>;
@@ -69,7 +60,9 @@ export default function Product({ products }: ProductsProps) {
         <h1> {products.name}</h1>
         <span>{products.price}</span>
         <p>{products.description}</p>
-        <button onClick={handleBuyProduct}  disabled={isCreatingCheckout}>Colocar na Sacola</button>
+        <button onClick={handleBuyProduct} disabled={isCreatingCheckout}>
+          Colocar na Sacola
+        </button>
       </ProductDetails>
     </ProductContainer>
   );
@@ -100,20 +93,21 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
 
   return {
     props: {
-      products:
-       {
-        id: products.id,
-        name: products.name,
-        description: products.description,
-        imageURL: products.images[0],
-        price: new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-          unitDisplay: "long",
-          maximumFractionDigits: 2,
-        }).format((price.unit_amount as number) / 100),
-        defaultPriceId: price.id,
-      },
+      products: 
+        {
+          id: products.id,
+          name: products.name,
+          description: products.description,
+          imageURL: products.images[0],
+          price: new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            unitDisplay: "long",
+            maximumFractionDigits: 2,
+          }).format((price.unit_amount as number) / 100),
+          defaultPriceId: price.id,
+        },
+      
     },
     //revalidate: 60 * 60 * 1,
   };

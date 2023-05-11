@@ -6,13 +6,14 @@ import * as React from "react";
 import Image from "next/image";
 import { Bag } from "phosphor-react";
 import Link from "next/link";
-import { CartProvider } from "use-shopping-cart";
+import { CartProvider, useShoppingCart } from "use-shopping-cart";
 
 
 GlobalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
 
+  //const {addItem} = useShoppingCart();
 
   return (
     <>

@@ -24,25 +24,12 @@ export interface ProductProp {
 
 
 export default function Product({ products }: ProductProp) {
-  const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
+
  const {addToCart, verifyIfExist} = useContext(CartContext)
 
 const alreadyinCart = verifyIfExist(products.id)
 
-  async function handleBuyProduct() {
-    try {
-      SetisCreatingCheckout(true);
-      const response = await axios.post("/api/checkout", {
-        priceId: products.defaultPriceId,
-      });
-      const { checkoutUrl } = response.data;
   
-      window.location.href = checkoutUrl;
-    } catch (error) {
-      SetisCreatingCheckout(false);
-      alert("falha ao redirecionar ao checkout");
-    }
-  }
  
   const { isFallback } = useRouter();
   if (isFallback) {

@@ -24,7 +24,7 @@ const PopoverDemo = () => (
           >
             Sacola de Compras{" "}
           </Text>
-          <Cart />
+        
         </Flex>
         <PopoverClose
           aria-label="Close"

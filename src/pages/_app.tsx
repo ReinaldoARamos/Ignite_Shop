@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div>
          <Link href={'/cart'}>
         
-        <PopoverDemo />
+       <Bag /> 
         </Link>
         </div>
       </Header>

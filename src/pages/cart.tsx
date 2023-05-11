@@ -15,6 +15,7 @@ import Camisa3 from "../../src/assets/Camisas/Camisa 1.png";
 import { useContext, useState } from "react";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 import { CartContext, ProductsProps } from "../context/context";
+import axios from "axios";
 
 
 //import { CartContext } from "../context/context";
@@ -29,6 +30,21 @@ export interface CartProps {
 
 export default function Cart() {
 const { cartItems, removeCartItem} = useContext(CartContext)
+const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
+async function handleBuyProduct() {
+  try {
+    SetisCreatingCheckout(true);
+    const response = await axios.post("/api/checkout", {
+     products: cartItems
+    });
+    const { checkoutUrl } = response.data;
+
+    window.location.href = checkoutUrl;
+  } catch (error) {
+    SetisCreatingCheckout(false);
+    alert("falha ao redirecionar ao checkout");
+  }
+}
 return (
   <>
     <CartContainer >
@@ -63,7 +79,7 @@ return (
         <div>Total: </div>
         <main> R$: 270.00</main>
       </Total>
-      <Purchase> Finalizar Compra</Purchase>
+      <Purchase onClick={handleBuyProduct}> Finalizar Compra</Purchase>
     </Summary>
   </>
 );

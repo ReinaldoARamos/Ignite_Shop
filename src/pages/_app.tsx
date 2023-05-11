@@ -8,6 +8,7 @@ import { Bag } from "phosphor-react";
 import Link from "next/link";
 import { CartProvider, useShoppingCart } from "use-shopping-cart";
 import { ContextProvider } from "../context/context";
+import PopoverDemo from "../Components/PopOver/PopOver";
 
 
 GlobalStyles();
@@ -31,7 +32,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <div>
          <Link href={'/cart'}>
-        <Bag size={24}/>
+        
+        <PopoverDemo />
         </Link>
         </div>
       </Header>

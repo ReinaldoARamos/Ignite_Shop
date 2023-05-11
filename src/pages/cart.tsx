@@ -28,10 +28,10 @@ export interface CartProps {
 
 
 export default function Cart() {
-const { cartItems} = useContext(CartContext)
+const { cartItems, removeCartItem} = useContext(CartContext)
 return (
   <>
-    <CartContainer>
+    <CartContainer >
     {cartItems.map((item) => {
           return (
            
@@ -42,7 +42,7 @@ return (
      <ProductContent>
        <h4>{item.name}</h4>
        <main>{item.price}</main>
-       <div>Remover</div>
+       <div onClick={() => {removeCartItem(item.id)}}>Remover</div>
       
      </ProductContent>
    </ProductContainer>

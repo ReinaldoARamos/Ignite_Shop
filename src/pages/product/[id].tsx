@@ -25,7 +25,7 @@ export interface ProductProp {
 
 export default function Product({ products }: ProductProp) {
   const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
- const {addToCart} = useContext(CartContext)
+ const {addToCart, removeCartItem} = useContext(CartContext)
 
   async function handleBuyProduct() {
     try {

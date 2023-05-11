@@ -5,7 +5,7 @@ import Product from "../pages/product/[id]";
 export interface ProductsProps {
   defaultPriceId: any;
   description: ReactNode;
-  price: string;
+  price: number;
   name: string;
   imageURL: string;
   id: string,
@@ -17,6 +17,7 @@ cartItems: ProductsProps[],
 addToCart: (product: ProductsProps) => void;
 removeCartItem: (productId: string) => void;
 verifyIfExist: (productId: string) => boolean;
+cartTotal: number;
 }
 
 
@@ -30,6 +31,9 @@ interface CartContextProviderProps  {
  export function ContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<ProductsProps[]>([]);
 
+  const cartTotal = cartItems.reduce((total, product) => {
+    return total + product.price;
+  }, 0);
 
   function addToCart(products: ProductsProps ) {
     setCartItems((state) => [...state, products]);
@@ -43,9 +47,9 @@ interface CartContextProviderProps  {
   function verifyIfExist(productId: string) {
     return cartItems.some((product) => product.id === productId);
   }
-
+ 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeCartItem, verifyIfExist}}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeCartItem, verifyIfExist, cartTotal}}>
       {children}
     </CartContext.Provider>
   );

@@ -20,7 +20,7 @@ interface SucessProps {
   };
 }
 */
-export default function Cart() {
+export default function CartSucess() {
   return (
     <SucessContainer>
     <h1>Compra efetuada com sucesso</h1>

@@ -29,8 +29,13 @@ export interface CartProps {
 
 
 export default function Cart() {
-const { cartItems, removeCartItem} = useContext(CartContext)
+const { cartItems, removeCartItem, cartTotal} = useContext(CartContext)
 const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
+const formattedCartTotal = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+}).format(cartTotal);
+
 async function handleBuyProduct() {
   try {
     SetisCreatingCheckout(true);
@@ -71,13 +76,13 @@ return (
     
     <Summary>
       <Quantity>
-        <section> Quantidade: </section>
-        <main> 3 items</main>
+        <section> Quantidade: {cartItems.length} </section>
+        <main> </main>
       </Quantity>
 
       <Total>
         <div>Total: </div>
-        <main> R$: 270.00</main>
+        <main> {formattedCartTotal}</main>
       </Total>
       <Purchase onClick={handleBuyProduct}> Finalizar Compra</Purchase>
     </Summary>

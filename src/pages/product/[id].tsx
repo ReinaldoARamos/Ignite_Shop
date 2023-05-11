@@ -13,23 +13,43 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useContext, useState } from "react";
 import CartContext from "@/src/context/context";
-import { useShoppingCart } from "use-shopping-cart";
+import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
+import { CartProps } from "../cart";
 
 export interface ProductsProps {
   products: {
     id: string;
     name: string;
     imageURL: string;
-    price: string;
+    price: string ;
     description: string;
     defaultPriceId: string;
+   
   };
 }
 
+
+
+
 export default function Product({ products }: ProductsProps) {
   const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
-  const {addItem} = useShoppingCart();
-
+ 
+  function Teste() {
+    const test = [{
+      name: products.name,
+      price: products.price
+    },
+    {
+      name: products.name,
+      price: products.price
+    },
+    {
+      name: products.name,
+     price: products.price
+    },
+  ]
+    console.log(test);
+  }
 
   async function handleBuyProduct() {
     try {
@@ -38,18 +58,20 @@ export default function Product({ products }: ProductsProps) {
         priceId: products.defaultPriceId,
       });
       const { checkoutUrl } = response.data;
-      console.log(response.data)
+  
       window.location.href = checkoutUrl;
     } catch (error) {
       SetisCreatingCheckout(false);
       alert("falha ao redirecionar ao checkout");
     }
   }
-
+ 
   const { isFallback } = useRouter();
   if (isFallback) {
     return <p>Loading...</p>;
   }
+
+  
 
   return (
     <ProductContainer>
@@ -60,7 +82,9 @@ export default function Product({ products }: ProductsProps) {
         <h1> {products.name}</h1>
         <span>{products.price}</span>
         <p>{products.description}</p>
-        <button onClick={handleBuyProduct} disabled={isCreatingCheckout}>
+        <button 
+         onClick={Teste} 
+         disabled={isCreatingCheckout}>
           Colocar na Sacola
         </button>
       </ProductDetails>

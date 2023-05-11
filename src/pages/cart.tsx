@@ -13,48 +13,69 @@ import Camisa1 from "../../src/assets/Camisas/Camisa 1.png";
 import Camisa2 from "../../src/assets/Camisas/Camisa 1.png";
 import Camisa3 from "../../src/assets/Camisas/Camisa 1.png";
 import { useState } from "react";
+import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
+import { ProductsProps } from "./product/[id]";
 
 //import { CartContext } from "../context/context";
 
-interface CartProps {
-  products: {
-    id: string;
-    name: string;
-    imageURL: string;
-    price: number;
-  }[];
+export interface CartProps {
+  cartItems: ProductsProps[],
+
 }
-export default function Cart({ products }: CartProps) {
 
+
+
+export default function Cart({ cartItems }: CartProps) {
+
+  
   const [cart, setCart] = useState<CartProps[]>([])
-  return (
-    <>
-      <CartContainer>
-        <ProductContainer>
-          <ImageContainer>
-            <Image src={Camisa1} alt="" width={240} height={240} />
-          </ImageContainer>
-          <ProductContent>
-            <h4>Camisa Igite</h4>
-            <main>RS 123.00</main>
-            <div>Remover</div>
-          </ProductContent>
-        </ProductContainer>
-      </CartContainer>
-      <Summary>
-        <Quantity>
-          <section> Quantidade: </section>
-          <main> 3 items</main>
-        </Quantity>
 
-        <Total>
-          <div>Total: </div>
-          <main> R$: 270.00</main>
-        </Total>
-        <Purchase> Finalizar Compra</Purchase>
-      </Summary>
-    </>
-  );
+
+
+
+  function Product({ product }) {
+  const { addItem } = useShoppingCart()
+
+  /* A helper function that turns the price into a readable format */
+  const price = formatCurrencyString({
+    value: product.price,
+    currency: product.currency,
+    language: 'en-US'
+
+    
+  })
+}
+
+
+return (
+  <>
+    <CartContainer>
+      <ProductContainer>
+        <ImageContainer>
+          <Image src={Camisa1} alt="" width={240} height={240} />
+        </ImageContainer>
+        <ProductContent>
+          <h4>Camisa</h4>
+          <main>RS 123.00</main>
+          <div>Remover</div>
+         
+        </ProductContent>
+      </ProductContainer>
+    </CartContainer>
+    <Summary>
+      <Quantity>
+        <section> Quantidade: </section>
+        <main> 3 items</main>
+      </Quantity>
+
+      <Total>
+        <div>Total: </div>
+        <main> R$: 270.00</main>
+      </Total>
+      <Purchase> Finalizar Compra</Purchase>
+    </Summary>
+  </>
+);
 }
 
 /*

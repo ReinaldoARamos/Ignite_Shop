@@ -20,7 +20,7 @@ import { ProductsProps } from "./product/[id]";
 
 export interface CartProps {
   cartItems: ProductsProps[
-    
+
   ],
 
 }
@@ -28,34 +28,6 @@ export interface CartProps {
 
 
 export default function Cart({ cartItems }: CartProps) {
-
-  
-  const [cart, setCart] = useState<CartProps[]>([])
-
-  function teste() {
-    setCart([
-      ...cart,
-      {
-        cartItems
-      }
-    ]);
-  }
-
-
-
-  function Product({ product }) {
-  const { addItem } = useShoppingCart()
-
-  /* A helper function that turns the price into a readable format */
-  const price = formatCurrencyString({
-    value: product.price,
-    currency: product.currency,
-    language: 'en-US'
-
-    
-  })
-}
-
 
 return (
   <>

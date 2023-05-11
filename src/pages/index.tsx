@@ -11,16 +11,13 @@ import { Head } from "next/document";
 import PopOver from "../Components/PopOver/PopOver";
 import { useContext } from "react";
 import Cart from "./cart";
+import { ProductsProps } from "../context/context";
 //import { CartContext } from "../context/context";
 
 interface HomeProps {
-  products: {
-    id: string;
-    name: string;
-    imageURL: string;
-    price: number;
-  }[];
-}
+  products: ProductsProps[]
+  };
+
 export default function Home({ products }: HomeProps) {
   const [sliderRef] = useKeenSlider({
     slides: {

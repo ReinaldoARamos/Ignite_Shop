@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { Key, ReactNode, createContext, useState } from "react";
 //
 
 //import { ProductsProps } from "../pages/product/[id]";
@@ -6,6 +6,10 @@ import { ReactNode, createContext, useState } from "react";
 //export interface CartItem extends ProductsProps {}
 
 export interface ProductsProps {
+  price: ReactNode;
+  name: ReactNode;
+  imageURL: string;
+  id: Key;
   products: {
     id: string;
     name: string;

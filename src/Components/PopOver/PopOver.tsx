@@ -25,17 +25,6 @@ const PopoverDemo = () => (
             Sacola de Compras{" "}
           </Text>
 
-          
-          <Quantity>
-            <section> Quantidade: </section>
-            <main> 3 items: </main>
-          </Quantity>
-
-          <Total>
-            <div>Total:</div>
-            <main> R$: 270.00</main>
-          </Total>
-          <Purchase> Finalizar Compra</Purchase>
         </Flex>
         <PopoverClose
           aria-label="Close"

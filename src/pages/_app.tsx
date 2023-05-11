@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Bag } from "phosphor-react";
 import Link from "next/link";
 import { CartProvider, useShoppingCart } from "use-shopping-cart";
+import { ContextProvider } from "../context/context";
 
 
 GlobalStyles();
@@ -18,12 +19,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
 
-<CartProvider
-    cartMode="checkout-session"
-    stripe={process.env.STRIPE_PUBLIC_KEY}
-    currency="BRL"
-    shouldPersist
-  >
+<ContextProvider>
+
 
     <Container>
       <Header>
@@ -42,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
 
     </Container>
-    </CartProvider>
+    </ContextProvider>
 
     </>
    

@@ -19,7 +19,9 @@ import { ProductsProps } from "./product/[id]";
 //import { CartContext } from "../context/context";
 
 export interface CartProps {
-  cartItems: ProductsProps[],
+  cartItems: ProductsProps[
+    
+  ],
 
 }
 

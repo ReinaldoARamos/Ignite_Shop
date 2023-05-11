@@ -22,18 +22,23 @@ cartItems: ProductsProps[]
 }
 interface CartContextType {
   cartItems: ProductsProps[],
+  teste: () => void
 }
 
 interface CartContextProviderProps {
   children: ReactNode;
 }
 
- const CartContext = createContext({} as CartContextType);
+ export const CartContext = createContext({} as CartContextType);
 
  export function ContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<ProductsProps[]>([]);
+
+  function teste() {
+    console.log("hi")
+  }
   return (
-    <CartContext.Provider value={{ cartItems }}>
+    <CartContext.Provider value={{ cartItems, teste }}>
       {children}
     </CartContext.Provider>
   );

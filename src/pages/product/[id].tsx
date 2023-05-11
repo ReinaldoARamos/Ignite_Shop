@@ -14,6 +14,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 import { CartProps } from "../cart";
+import { CartContext, ContextProvider } from "@/src/context/context";
 
 export interface ProductsProps {
   products: {
@@ -32,7 +33,11 @@ export interface ProductsProps {
 
 export default function Product({ products }: ProductsProps) {
   const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
- 
+ const {teste} = useContext(CartContext)
+
+ function Hi() {
+  teste();
+ }
   function Teste() {
     const test = [{
       name: products.name,
@@ -82,7 +87,7 @@ export default function Product({ products }: ProductsProps) {
         <span>{products.price}</span>
         <p>{products.description}</p>
         <button 
-         onClick={Teste} 
+         onClick={Hi} 
          disabled={isCreatingCheckout}>
           Colocar na Sacola
         </button>

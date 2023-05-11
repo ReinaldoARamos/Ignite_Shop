@@ -26,6 +26,7 @@ export interface CartProps {
 
 
 
+
 export default function Cart() {
 const { cartItems} = useContext(CartContext)
 return (

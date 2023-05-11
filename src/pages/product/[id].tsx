@@ -25,7 +25,9 @@ export interface ProductProp {
 
 export default function Product({ products }: ProductProp) {
   const [isCreatingCheckout, SetisCreatingCheckout] = useState(false);
- const {addToCart, removeCartItem} = useContext(CartContext)
+ const {addToCart, verifyIfExist} = useContext(CartContext)
+
+const alreadyinCart = verifyIfExist(products.id)
 
   async function handleBuyProduct() {
     try {
@@ -60,8 +62,11 @@ export default function Product({ products }: ProductProp) {
         <p>{products.description}</p>
         <button 
         onClick={() => addToCart(products)}
-         disabled={isCreatingCheckout}>
-          Colocar na Sacola
+         disabled={alreadyinCart}>
+           {alreadyinCart
+              ? "Produto já está no carrinho"
+              : "Colocar na sacola"}
+
         </button>
       </ProductDetails>
     </ProductContainer>

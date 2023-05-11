@@ -16,7 +16,7 @@ export interface CartContextType{
 cartItems: ProductsProps[],
 addToCart: (product: ProductsProps) => void;
 removeCartItem: (productId: string) => void;
-
+verifyIfExist: (productId: string) => boolean;
 }
 
 
@@ -40,8 +40,12 @@ interface CartContextProviderProps  {
     setCartItems((state) => state.filter((item) => item.id !== productId));
   }
 
+  function verifyIfExist(productId: string) {
+    return cartItems.some((product) => product.id === productId);
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeCartItem }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeCartItem, verifyIfExist}}>
       {children}
     </CartContext.Provider>
   );

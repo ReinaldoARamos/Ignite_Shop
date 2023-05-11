@@ -12,7 +12,6 @@ import {
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useContext, useState } from "react";
-import CartContext from "@/src/context/context";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 import { CartProps } from "../cart";
 

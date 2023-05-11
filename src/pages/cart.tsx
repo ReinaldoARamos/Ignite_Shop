@@ -30,6 +30,14 @@ export default function Cart({ cartItems }: CartProps) {
   
   const [cart, setCart] = useState<CartProps[]>([])
 
+  function teste() {
+    setCart([
+      ...cart,
+      {
+        cartItems
+      }
+    ]);
+  }
 
 
 
@@ -55,7 +63,7 @@ return (
           <Image src={Camisa1} alt="" width={240} height={240} />
         </ImageContainer>
         <ProductContent>
-          <h4>Camisa</h4>
+          <h4>aws</h4>
           <main>RS 123.00</main>
           <div>Remover</div>
          

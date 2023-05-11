@@ -1,24 +1,27 @@
 import { ReactNode, createContext, useState } from "react";
 //
-import { ProductsProps } from "../pages/product/[id]";
+
 //import { ProductsProps } from "../pages/product/[id]";
 
 //export interface CartItem extends ProductsProps {}
 
-export interface CartItem {
+export interface ProductsProps {
   products: {
     id: string;
     name: string;
     imageURL: string;
-    price: string;
+    price: string ;
     description: string;
     defaultPriceId: string;
+   
   };
 }
 
+export interface CartData{
+cartItems: ProductsProps[]
+}
 interface CartContextType {
- 
-  teste:  string,
+  cartItems: ProductsProps[],
 }
 
 interface CartContextProviderProps {
@@ -27,15 +30,11 @@ interface CartContextProviderProps {
 
  const CartContext = createContext({} as CartContextType);
 
-export function ContextProvider({ children }: CartContextProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    return [];
-
-    
-  });
-
- const teste = "Hi"
- 
+ export function ContextProvider({ children }: CartContextProviderProps) {
+  const [cartItems, setCartItems] = useState<ProductsProps[]>([]);
+  return (
+    <CartContext.Provider value={{ cartItems }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
-
-export default CartContext

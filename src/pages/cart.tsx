@@ -16,6 +16,7 @@ import { useContext, useState } from "react";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 import { CartContext, ProductsProps } from "../context/context";
 import axios from "axios";
+import EmptyCart from "../Components/EmptyCart/EmptyCart";
 
 
 //import { CartContext } from "../context/context";
@@ -52,7 +53,9 @@ async function handleBuyProduct() {
 }
 
 if(cartItems.length == 0){
-  return(console.log("carro vazio"))
+  return(
+    <EmptyCart />
+  )
 }else 
   console.log('item')
 return (
@@ -94,60 +97,3 @@ return (
   </>
 );
 }
-
-
-/*
-     <ProductContainer>
-        <ImageContainer>
-          <Image src={Camisa1} alt="" width={240} height={240} />
-        </ImageContainer>
-        <ProductContent>
-          <h4>aws</h4>
-          <main>RS 123.00</main>
-          <div>Remover</div>
-         
-        </ProductContent>
-      </ProductContainer>
-* */
-/*
-
-export const getStaticProps: GetStaticProps = async () => {
-  const response = await stripe.products.list({
-    expand: ["data.default_price"],
-  });
-  console.log(response.data);
-
-  const products = response.data.map(
-    (product: {
-      default_price: Stripe.Price;
-      id: any;
-      name: any;
-      description: any;
-      images: any[];
-    }) => {
-      const price = product.default_price as Stripe.Price;
-
-      return {
-        
-        id: product.id,
-        name: product.name,
-        description: product.description,
-        imageURL: product.images[0],
-        price: new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-          unitDisplay: "long",
-          maximumFractionDigits: 2,
-        }).format((price.unit_amount as number) / 100),
-      };
-    }
-  );
-
-  return {
-    props: {
-      products,
-    },
-    revalidate: 60 * 60 * 2, //a cada duas horas
-  };
-};
-* */

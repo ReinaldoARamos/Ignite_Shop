@@ -89,6 +89,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
         {
           id: products.id,
           name: products.name,
+          
           description: products.description,
           imageURL: products.images[0],
           price: new Intl.NumberFormat("pt-BR", {
@@ -98,6 +99,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
             maximumFractionDigits: 2,
           }).format((price.unit_amount as number) / 100),
           defaultPriceId: price.id,
+          numberPrice: price.unit_amount / 100,
         },
       
     },

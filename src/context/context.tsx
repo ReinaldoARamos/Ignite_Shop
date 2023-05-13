@@ -1,5 +1,5 @@
-import { Key, ReactNode, createContext, useState } from "react";
-import Product from "../pages/product/[id]";
+import {ReactNode, createContext, useState } from "react";
+
 
 
 export interface ProductsProps {
@@ -9,6 +9,7 @@ export interface ProductsProps {
   name: string;
   imageURL: string;
   id: string,
+  numberPrice: number,
 
 }
 
@@ -31,13 +32,14 @@ interface CartContextProviderProps  {
  export function ContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<ProductsProps[]>([]);
 
-  const cartTotal = cartItems.reduce((total, product) => {
-    return total + product.price;
-  }, 0);
+  const cartTotal = cartItems.reduce((total, products) => {
+    return total + products.numberPrice
+  }, 0)
 
+  console.log(cartTotal)
   function addToCart(products: ProductsProps ) {
     setCartItems((state) => [...state, products]);
-    console.log(products);
+    
     
   }
   function removeCartItem(productId: string) {

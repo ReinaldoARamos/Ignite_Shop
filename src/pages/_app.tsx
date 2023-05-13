@@ -25,9 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
     <Container>
       <Header>
-        <a href="/">
+        <Link href="/">
         <Image src={Logo} alt=" "  />
-        </a>
+        </Link>
     
 
         <div>

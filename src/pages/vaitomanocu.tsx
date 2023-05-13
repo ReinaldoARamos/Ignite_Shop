@@ -4,15 +4,11 @@ import Head from "next/head";
 import Link from "next/link";
 import Stripe from "stripe";
 import { stripe } from "../lib/stripe";
-import {
-  ImageContainer,
-  ImagesContainer,
-  SucessContainer,
-} from "../styles/pages/sucess";
+import { SucessContainer } from "../styles/pages/sucess";
 
 interface SuccessProps {
   customerName: string;
-  products: {
+  product: {
     name: string;
     imageUrl: string;
   };
@@ -21,7 +17,7 @@ interface SuccessProps {
 
 export default function Success({
   customerName,
-  products,
+  product,
   productsImages,
 }: SuccessProps) {
   return (
@@ -33,10 +29,10 @@ export default function Success({
 
       <SucessContainer>
         <ImagesContainer>
-          {productsImages.map((item, i) => (
-            <ImageContainer key={i}>
-              <Image src={item} width={140} height={140} alt="" />
-            </ImageContainer>
+          {productsImages.map((image, i) => (
+            <ImagesContainer key={i}>
+              <Image src={image} width={120} height={110} alt="" />
+            </ImagesContainer>
           ))}
         </ImagesContainer>
 
@@ -71,8 +67,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const customerName = session.customer_details.name;
   const productsImages = session.line_items.data.map((item) => {
-    const products = item.price.product as Stripe.Product;
-    return products.images[0];
+    const product = item.price.product as Stripe.Product;
+    return product.images[0];
   });
 
   return {

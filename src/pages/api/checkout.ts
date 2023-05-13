@@ -1,6 +1,6 @@
 import { stripe } from "@/src/lib/stripe";
 import { NextApiRequest, NextApiResponse } from "next";
-import { NextRequest, NextResponse } from "next/server";
+
 import { ProductsProps } from "@/src/context/context";
 
 export default async function handler(

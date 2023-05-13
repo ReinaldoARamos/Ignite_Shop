@@ -50,6 +50,11 @@ async function handleBuyProduct() {
     alert("falha ao redirecionar ao checkout");
   }
 }
+
+if(cartItems.length == 0){
+  return(console.log("carro vazio"))
+}else 
+  console.log('item')
 return (
   <>
     <CartContainer >

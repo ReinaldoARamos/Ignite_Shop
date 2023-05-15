@@ -8,6 +8,8 @@ import { Purchase, Quantity, Total } from "@/src/styles/pages/cart";
 import Cart from "@/src/pages/cart";
 import Home from "@/src/pages";
 import { MiniCart } from "../MiniCart/MiniCart";
+import Link from "next/link";
+import { GoToCart } from "@/src/styles/components/MiniCart";
 
 
 const PopoverDemo = () => (
@@ -27,6 +29,10 @@ const PopoverDemo = () => (
           </Text>
         <MiniCart />
         </Flex>
+        <Link href={"/cart"}>
+        <GoToCart>Ver Carrinho completo</GoToCart>
+        </Link>
+       
         <PopoverClose
           aria-label="Close"
           css={{ border: "none", outline: "hidden" }}
@@ -104,7 +110,7 @@ const PopoverClose = styled(Popover.Close, {
   "&:hover": { color: "$green300" },
 });
 
-const Flex = styled("div", { display: "flex" });
+const Flex = styled("div", { display: "flex",  height: 530, overflow: 'hidden'});
 
 const IconButton = styled("button", {
   all: "unset",

@@ -3,6 +3,8 @@ import { CartContext, ProductsProps } from "@/src/context/context";
 import { useContext } from "react";
 import Image from 'next/image'
 import { MiniCartContainer, MiniImageContainer, MiniProductContainer, MiniProductContent } from "@/src/styles/components/MiniCart";
+import EmptyCart from "../EmptyCart/EmptyCart";
+import MiniEmptyCart from "../MiniEmptyCart/MiniEmpyCart";
 export interface CartProps {
     cartItems: ProductsProps[],
   
@@ -11,7 +13,11 @@ export interface CartProps {
 export function MiniCart() {
     const { cartItems, cartTotal, removeCartItem} = useContext(CartContext)
 
-    return (
+    if(cartItems.length == 0){
+        return(
+          <MiniEmptyCart />
+        )
+      }else  return (
        
           <MiniCartContainer >
           {cartItems.map((item) => {

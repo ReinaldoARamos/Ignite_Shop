@@ -4,16 +4,19 @@ import Logo from "../assets/logo.svg";
 import { Container, Header } from "../styles/pages/app";
 import * as React from "react";
 import Image from "next/image";
-import { Bag } from "phosphor-react";
+
 import Link from "next/link";
-import { CartProvider, useShoppingCart } from "use-shopping-cart";
-import { ContextProvider } from "../context/context";
+import { CartContext, ContextProvider, ProductsProps } from "../context/context";
 import PopoverDemo from "../Components/PopOver/PopOver";
+import { useContext } from "react";
 
 GlobalStyles();
 
+
+
+
 export default function App({ Component, pageProps }: AppProps) {
-  //const {addItem} = useShoppingCart();
+
 
   return (
     <>
@@ -23,8 +26,9 @@ export default function App({ Component, pageProps }: AppProps) {
             <Link href="/">
               <Image src={Logo} alt=" " />
             </Link>
-    
+
             <PopoverDemo />
+          
           </Header>
 
           <Component {...pageProps} />

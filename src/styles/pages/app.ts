@@ -17,10 +17,9 @@ export const Header = styled("header", {
   alignItems: "center",
   justifyContent: "space-between",
 
-  section: {},
 
-  a: {
-    background: "Red",
+  svg: {
+
     width: 42,
     height: 42,
     borderRadius: 8,

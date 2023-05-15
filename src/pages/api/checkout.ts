@@ -1,7 +1,7 @@
+import { ProductsProps } from "@/src/context/context";
 import { stripe } from "@/src/lib/stripe";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { ProductsProps } from "@/src/context/context";
 
 export default async function handler(
   req: NextApiRequest,

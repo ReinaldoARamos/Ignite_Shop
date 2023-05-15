@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import { styled, keyframes } from "@stitches/react";
 import { violet, mauve, blackA } from "@radix-ui/colors";
@@ -10,13 +10,33 @@ import Home from "@/src/pages";
 import { MiniCart } from "../MiniCart/MiniCart";
 import Link from "next/link";
 import { GoToCart } from "@/src/styles/components/MiniCart";
+import { CartContext } from "@/src/context/context";
+
+import { display } from "@mui/system";
+import css from "styled-jsx/css";
 
 
-const PopoverDemo = () => (
+
+export default function PopoverDemo() {
+  const { cartItems} = useContext(CartContext)
+
+//display: 'hidden'
+return(
+  
   <Popover.Root>
     <Popover.Trigger asChild>
       <IconButton aria-label="Update dimensions">
+  
+        {cartItems.length
+              ?       <div>{cartItems.length } </div>
+              :       <section></section>}
+      
+      
+   
+     
         <Bag size={24} />
+       
+        
       </IconButton>
     </Popover.Trigger>
     <Popover.Portal>
@@ -43,7 +63,8 @@ const PopoverDemo = () => (
       </PopoverContent>
     </Popover.Portal>
   </Popover.Root>
-);
+)
+};
 
 const slideUpAndFade = keyframes({
   "0%": { opacity: 0, transform: "translateY(2px)" },
@@ -124,37 +145,33 @@ const IconButton = styled("button", {
   color: "$gray100",
 
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
-});
-const Fieldset = styled("fieldset", {
-  all: "unset",
-  display: "flex",
-  gap: 20,
-  alignItems: "center",
+
+  
+  div: {
+
+    display: 'flex',
+    justifyContent: 'center',
+
+
+     
+          backgroundColor: '$green300',
+          borderRadius: 99999,
+          width: 20,
+          height: 20,
+     
+        alignItems: "center",
+        marginRight: -30,
+        marginTop: -20,
+        position: 'absolute',
+        color: "$gray800",
+      
+        section: {
+          display: 'hidden',
+        }
+  },
 });
 
-const Label = styled("label", {
-  fontSize: 13,
-  color: violet.violet11,
-  width: 75,
-});
 
-const Input = styled("input", {
-  all: "unset",
-  width: "100%",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flex: "1",
-  borderRadius: 4,
-  padding: "0 10px",
-  fontSize: 13,
-  lineHeight: 1,
-  color: violet.violet11,
-  boxShadow: `0 0 0 1px ${violet.violet7}`,
-  height: 25,
-
-  "&:focus": { boxShadow: `0 0 0 2px ${violet.violet8}` },
-});
 
 const Text = styled("p", {
   margin: 0,
@@ -164,5 +181,4 @@ const Text = styled("p", {
   fontWeight: 500,
 });
 
-export default PopoverDemo;
 

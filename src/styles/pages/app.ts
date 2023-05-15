@@ -17,7 +17,9 @@ export const Header = styled("header", {
   alignItems: "center",
   justifyContent: "space-between",
 
-  div: {
+  section: {},
+
+  a: {
     background: "Red",
     width: 42,
     height: 42,
@@ -27,15 +29,9 @@ export const Header = styled("header", {
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
-    transition: '0.4s',
+    transition: "0.4s",
+    color: "$gray500",
 
-    
-    svg: {
-      color: "$gray500",
-    },
-    a:{
-      color: "$gray500",
-    },
     "&:hover": {
       svg: {
         color: "$gray300",

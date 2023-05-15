@@ -10,40 +10,29 @@ import { CartProvider, useShoppingCart } from "use-shopping-cart";
 import { ContextProvider } from "../context/context";
 import PopoverDemo from "../Components/PopOver/PopOver";
 
-
 GlobalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
-
   //const {addItem} = useShoppingCart();
 
   return (
     <>
-
-<ContextProvider>
-
-
-    <Container>
-      <Header>
-        <Link href="/">
-        <Image src={Logo} alt=" "  />
-        </Link>
-    
-
-        <div>
-         <Link href={'/cart'}>
+      <ContextProvider>
+        <Container>
+          <Header>
+            <Link href="/">
+              <Image src={Logo} alt=" " />
+            </Link>
+            <Link href={"/cart"}>
+             
+                <Bag />
         
-       <Bag /> 
-        </Link>
-        </div>
-      </Header>
-   
-      <Component {...pageProps} />
+            </Link>
+          </Header>
 
-    </Container>
-    </ContextProvider>
-
+          <Component {...pageProps} />
+        </Container>
+      </ContextProvider>
     </>
-   
   );
 }

@@ -7,6 +7,7 @@ import { Bag, ShoppingCart } from "phosphor-react";
 import { Purchase, Quantity, Total } from "@/src/styles/pages/cart";
 import Cart from "@/src/pages/cart";
 import Home from "@/src/pages";
+import { MiniCart } from "../MiniCart/MiniCart";
 
 
 const PopoverDemo = () => (
@@ -24,7 +25,7 @@ const PopoverDemo = () => (
           >
             Sacola de Compras{" "}
           </Text>
-        
+        <MiniCart />
         </Flex>
         <PopoverClose
           aria-label="Close"

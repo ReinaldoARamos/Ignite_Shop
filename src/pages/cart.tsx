@@ -9,11 +9,7 @@ import {
   Summary,
   Total,
 } from "../styles/pages/cart";
-import Camisa1 from "../../src/assets/Camisas/Camisa 1.png";
-import Camisa2 from "../../src/assets/Camisas/Camisa 1.png";
-import Camisa3 from "../../src/assets/Camisas/Camisa 1.png";
 import { useContext, useState } from "react";
-import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 import { CartContext, ProductsProps } from "../context/context";
 import axios from "axios";
 import EmptyCart from "../Components/EmptyCart/EmptyCart";

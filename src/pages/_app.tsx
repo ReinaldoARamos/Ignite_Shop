@@ -20,6 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <ContextProvider>
         <Container>
           <Header>
+
+            <PopoverDemo />
             <Link href="/">
               <Image src={Logo} alt=" " />
             </Link>

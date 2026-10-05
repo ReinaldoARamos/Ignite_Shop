@@ -1,38 +1,229 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛍️ Ignite Shop
 
-## Getting Started
+E-commerce desenvolvido com **Next.js e TypeScript**, integrado à **Stripe** para gerenciamento de produtos e criação de sessões de checkout.
 
-First, run the development server:
+A aplicação apresenta um fluxo completo de compra, permitindo visualizar produtos, acessar seus detalhes, adicionar itens ao carrinho e iniciar o processo de checkout através da Stripe.
+
+O projeto foi desenvolvido durante a trilha **Ignite da Rocketseat**, com foco na prática de conceitos do ecossistema Next.js e na integração com serviços externos.
+
+## 🚀 Features
+
+* Catálogo de produtos
+* Página individual de produto
+* Navegação entre produtos
+* Carrinho de compras
+* Visualização rápida do carrinho
+* Adição e remoção de produtos
+* Cálculo do valor total do carrinho
+* Integração com Stripe
+* Criação de sessão de checkout
+* Redirecionamento para checkout da Stripe
+* Integração com API Routes do Next.js
+* Geração estática de páginas
+* Atualização incremental dos dados com ISR
+* Slider de produtos
+* Interface estilizada e componentizada
+
+## 🛠️ Technologies
+
+### Front-end
+
+* **Next.js**
+* **React**
+* **TypeScript**
+* **Next/Image**
+* **Keen Slider**
+
+### State Management
+
+* **React Context API**
+* **React Hooks**
+
+### Payments & API
+
+* **Stripe**
+* **Next.js API Routes**
+* **Axios**
+
+### UI & Styling
+
+* **Stitches**
+* **Radix UI**
+* **Radix Colors**
+* **Material UI**
+* **Phosphor Icons**
+
+## 🧠 Concepts Applied
+
+Este projeto foi desenvolvido para praticar conceitos importantes utilizados na construção de aplicações web modernas:
+
+* Server-side APIs com Next.js
+* Static Site Generation (SSG)
+* Dynamic Routes
+* Incremental Static Regeneration (ISR)
+* Integração com APIs externas
+* Integração com serviços de pagamento
+* Context API
+* Gerenciamento de estado global
+* Custom Hooks
+* Componentização
+* Reutilização de componentes
+* TypeScript
+* Formatação de valores monetários
+* Carregamento otimizado de imagens
+* Responsividade e estilização
+* Separação de responsabilidades
+
+## 💳 Stripe Integration
+
+A aplicação utiliza a **Stripe** para disponibilizar os produtos e iniciar o processo de checkout.
+
+O fluxo funciona da seguinte forma:
+
+```text
+Produtos
+   ↓
+Stripe API
+   ↓
+Catálogo de produtos
+   ↓
+Página de produto
+   ↓
+Carrinho
+   ↓
+API Route /api/checkout
+   ↓
+Stripe Checkout
+```
+
+A comunicação com a Stripe é realizada no lado do servidor através das API Routes do Next.js, evitando que informações sensíveis sejam expostas ao cliente.
+
+> **Importante:** a chave secreta da Stripe deve ser armazenada em uma variável de ambiente e nunca diretamente no código-fonte.
+
+Exemplo:
+
+```env
+STRIPE_SECRET_KEY=your_secret_key
+```
+
+## 📂 Project Structure
+
+```text
+src/
+├── Components/       # Reusable UI components
+├── assets/           # Images, icons and static assets
+├── context/          # Global application state
+├── lib/              # External service configuration
+├── pages/            # Next.js pages and API routes
+│   ├── api/          # Server-side API routes
+│   ├── product/      # Dynamic product pages
+│   ├── cart.tsx      # Shopping cart
+│   └── index.tsx     # Product catalog
+└── styles/           # Global styles and page styles
+```
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+Before starting, make sure you have installed:
+
+* [Node.js](https://nodejs.org/)
+* npm
+* A Stripe account for the payment integration
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/ReinaldoARamos/Ignite_Shop.git
+```
+
+Enter the project directory:
+
+```bash
+cd Ignite_Shop
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root of the project:
+
+```env
+STRIPE_SECRET_KEY=your_secret_key
+```
+
+Replace `your_secret_key` with your Stripe secret key.
+
+### Running the project
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 📜 Available Scripts
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+| Command         | Description                   |
+| --------------- | ----------------------------- |
+| `npm run dev`   | Starts the development server |
+| `npm run build` | Creates the production build  |
+| `npm run start` | Starts the production server  |
+| `npm run lint`  | Runs the Next.js linter       |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🎯 Project Goals
 
-## Learn More
+The main goal of this project was to build a complete e-commerce experience while practicing concepts commonly used in modern web applications.
 
-To learn more about Next.js, take a look at the following resources:
+The project focuses particularly on:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Building applications with Next.js
+* Working with dynamic routes
+* Consuming external APIs
+* Integrating payment services
+* Managing global application state
+* Creating reusable React components
+* Working with server-side functionality
+* Understanding static generation and ISR
+* Building a complete shopping flow
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🔮 Possible Improvements
 
-## Deploy on Vercel
+Future improvements could include:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* User authentication
+* Persistent shopping cart
+* Product quantity management
+* Product search and filtering
+* Product categories
+* Order history
+* Database integration
+* Improved loading and error states
+* Automated tests
+* Improved accessibility
+* Production deployment
+* Webhooks for payment confirmation
+* Order persistence after successful payment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 👨‍💻 Author
+
+**Reinaldo Aparecido Ramos**
+
+Full-Stack Developer focused on building modern web applications with **React, Next.js, TypeScript and Node.js**.
+
+* GitHub: https://github.com/ReinaldoARamos
+* LinkedIn: https://www.linkedin.com/in/reinaldo-aparecido/
